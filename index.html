@@ -1,0 +1,1979 @@
+<!doctype html>
+<html lang="es"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+  <title>Mujer Saludable</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+  <style>
+    /* Variables de color para el tema claro (original) */
+:root {
+  --color-primary: #e91e63;
+  --color-primary-light: #f48fb1;
+  --color-primary-dark: #c2185b;
+  --color-accent: #8e24aa;
+  --color-text: #333;
+  --color-text-light: #666;
+  --color-bg: #fefefe;
+  --color-bg-card: #fff;
+  --color-border: #eaeaea;
+}
+
+/* Estilos generales (aplican a ambos temas) */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding-bottom: 70px; /* Espacio para la barra de navegación inferior */
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: white;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.nombre-usuario {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.seccion {
+  display: none;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.seccion.activa {
+  display: block;
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.card {
+  background: var(--color-bg-card);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border);
+}
+
+.nav-inferior {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 999;
+  border-top: 1px solid var(--color-border);
+}
+
+.nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 10px;
+  transition: 0.3s;
+}
+
+.nav-btn i {
+  font-size: 20px;
+  margin-bottom: 2px;
+  transition: 0.3s;
+}
+
+.nav-btn.activo {
+  color: var(--color-primary);
+}
+
+.nav-btn.activo i {
+  transform: scale(1.2);
+}
+
+h2 {
+  margin-bottom: 15px;
+  color: var(--color-primary);
+  font-size: 22px;
+}
+
+h3 {
+  margin-bottom: 10px;
+  color: var(--color-primary-dark);
+  font-size: 18px;
+}
+
+p {
+  margin-bottom: 15px;
+  color: var(--color-text-light);
+}
+
+.quote {
+  font-style: italic;
+  border-left: 3px solid var(--color-primary-light);
+  padding-left: 15px;
+}
+
+canvas {
+  width: 100%;
+  max-width: 100%;
+  height: 180px;
+  margin: 15px 0;
+  background: #fafafa;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+button {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+  width: 100%;
+}
+
+button:hover {
+  background: var(--color-primary-dark);
+}
+
+button.outline {
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+button.outline:hover {
+  background: rgba(233, 30, 99, 0.1);
+}
+
+button.danger {
+  background: #f44336;
+}
+
+button.danger:hover {
+  background: #d32f2f;
+}
+
+.btn-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+small {
+  display: block;
+  margin-top: 20px;
+  color: #888;
+  text-align: center;
+}
+
+.estado-animo {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.estado-btn {
+  background: #f0f0f0;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 20px;
+}
+
+.estado-btn.seleccionado {
+  border-color: var(--color-primary);
+  background: rgba(233, 30, 99, 0.1);
+}
+
+.progreso-container {
+  background: #f0f0f0;
+  border-radius: 8px;
+  height: 20px;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.progreso-barra {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary));
+  transition: width 0.3s;
+}
+
+.fases-ciclo {
+  display: flex;
+  margin: 15px 0;
+}
+
+.fase {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 12px;
+  position: relative;
+}
+
+.fase-1 {
+  background: #f8bbd0;
+}
+
+.fase-2 {
+  background: #e1bee7;
+}
+
+.fase-3 {
+  background: #bbdefb;
+}
+
+.fase-4 {
+  background: #c8e6c9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.stat-box {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+}
+
+.stat-box h4 {
+  font-size: 12px;
+  color: var(--color-text-light);
+  margin-bottom: 5px;
+}
+
+.stat-box p {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.sintomas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.sintoma-tag {
+  padding: 8px;
+  background: #f0f0f0;
+  border-radius: 6px;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sintoma-tag.activo {
+  background: var(--color-primary-light);
+  color: white;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tab {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tab.activo {
+  border-bottom-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.activo {
+  display: block;
+}
+
+.recordatorio {
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 3px solid var(--color-primary);
+  position: relative;
+}
+
+.recordatorio-acciones {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.recordatorio-acciones i {
+  cursor: pointer;
+  color: #888;
+  margin-left: 8px;
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 3px solid white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.avatar i {
+  font-size: 50px;
+  color: #ccc;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.foto-row {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.foto-btn {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  background: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin-left: 10px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--color-primary);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.config-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.loader {
+  display: none;
+  margin: 20px auto;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--color-primary);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.icon-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.icon-text i {
+  color: var(--color-primary);
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  background: var(--color-primary-light);
+  color: white;
+  border-radius: 12px;
+  font-size: 11px;
+  margin-left: 5px;
+}
+
+.no-data {
+  text-align: center;
+  padding: 30px 0;
+  color: #888;
+}
+
+.no-data i {
+  font-size: 40px;
+  margin-bottom: 10px;
+  opacity: 0.4;
+}
+
+.mensaje-flotante {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  z-index: 1000;
+  display: none;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+  --color-text: #eee;
+  --color-text-light: #ccc;
+  --color-bg: #121212;
+  --color-bg-card: #1e1e1e;
+  --color-border: #333;
+}
+
+body.dark-mode .card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .nav-inferior {
+  background: #1e1e1e;
+  border-top: 1px solid var(--color-border);
+}
+
+body.dark-mode .nav-btn {
+  color: #aaa;
+}
+
+body.dark-mode .nav-btn.activo {
+  color: var(--color-primary);
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #2a2a2a;
+  border-color: #444;
+  color: #eee;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
+}
+
+body.dark-mode h2 {
+  color: var(--color-primary);
+}
+
+body.dark-mode h3 {
+  color: var(--color-primary-dark);
+}
+
+body.dark-mode .estado-btn {
+  background: #444;
+  color: #eee;
+}
+
+body.dark-mode .estado-btn.seleccionado {
+  border-color: var(--color-primary);
+  background: rgba(233, 30, 99, 0.1);
+  color: #eee;
+}
+
+body.dark-mode .progreso-container {
+  background-color: #444;
+}
+
+body.dark-mode .tab {
+  color: #aaa;
+}
+
+body.dark-mode .tab.activo {
+  color: var(--color-primary);
+}
+
+body.dark-mode .sintoma-tag {
+  background-color: #444;
+  color: #eee;
+}
+
+body.dark-mode .sintoma-tag.activo {
+  background-color: var(--color-primary-light);
+  color: #fff;
+}
+</style>
+
+
+ </head> 
+ <body>
+   
+  <header id="cabecera">
+    <h1><i class="fa fa-heartbeat"></i> Mujer Saludable</h1>
+    <div class="nombre-usuario" id="headerNombre"><i class="fa fa-user"></i> Bienvenida</div>
+  </header>
+
+  <div id="mensaje-flotante" class="mensaje-flotante"></div>
+
+  <div id="inicio" class="seccion activa">
+    <div class="card">
+      <h2><i class="fa fa-star"></i> Bienvenida</h2>
+      <div id="saludoUsuaria"></div>
+      <div class="quote">
+        <p id="fraseDelDia">"<i class="fa fa-quote-left"></i> Tu bienestar es tu mayor riqueza. <i class="fa fa-quote-right"></i>"</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa fa-thermometer-half"></i> Estado de hoy</h3>
+      <p>¿Cómo te sientes hoy?</p>
+      <div class="estado-animo">
+        <div class="estado-btn" data-valor="1"><i class="fa fa-frown"></i></div>
+        <div class="estado-btn" data-valor="2"><i class="fa fa-meh"></i></div>
+        <div class="estado-btn" data-valor="3"><i class="fa fa-smile"></i></div>
+        <div class="estado-btn" data-valor="4"><i class="fa fa-laugh"></i></div>
+        <div class="estado-btn" data-valor="5"><i class="fa fa-grin-beam"></i></div>
+      </div>
+      <button id="guardarAnimo"><i class="fa fa-save"></i> Guardar estado</button>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa fa-chart-pie"></i> Resumen</h3>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <h4><i class="fa fa-calendar-alt"></i> Ciclo</h4>
+          <p id="resumeCiclo">-</p>
+        </div>
+        <div class="stat-box">
+          <h4><i class="fa fa-heart"></i> Estado</h4>
+          <p id="resumeEstado">-</p>
+        </div>
+        <div class="stat-box">
+          <h4><i class="fa fa-weight-hanging"></i> Peso</h4>
+          <p id="resumePeso">-</p>
+        </div>
+        <div class="stat-box">
+          <h4><i class="fa fa-calculator"></i> IMC</h4>
+          <p id="resumeIMC">-</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa fa-bell"></i> Recordatorios</h3>
+      <div id="recordatorios-container">
+        <div class="no-data">
+          <i class="fa fa-bell-slash"></i>
+          <p>No tienes recordatorios</p>
+        </div>
+      </div>
+      <button id="nuevoRecordatorio" class="outline"><i class="fa fa-plus"></i> Nuevo Recordatorio</button>
+    </div>
+  </div>
+
+  <div id="ciclo" class="seccion">
+    <div class="card">
+      <h2><i class="fa fa-calendar-week"></i> Ciclo Menstrual</h2>
+      <div class="form-group">
+        <label><i class="fa fa-calendar-day"></i> Fecha de inicio del último periodo:</label>
+        <input type="date" id="fechaCiclo" />
+      </div>
+      <div class="form-group">
+        <label><i class="fa fa-hourglass-half"></i> Duración promedio de tu ciclo (días):</label>
+        <input type="number" id="duracionCiclo" min="21" max="40" value="28" />
+      </div>
+      <div class="form-group">
+        <label><i class="fa fa-hourglass-start"></i> Duración promedio de tu periodo (días):</label>
+        <input type="number" id="duracionPeriodo" min="1" max="10" value="5" />
+      </div>
+      <button onclick="guardarCiclo()"><i class="fa fa-save"></i> Guardar</button>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa fa-line-chart"></i> Tu Ciclo</h3>
+      <div class="fases-ciclo">
+        <div class="fase fase-1"><i class="fa fa-tint"></i> Menstruación</div>
+        <div class="fase fase-2"><i class="fa fa-leaf"></i> Folicular</div>
+        <div class="fase fase-3"><i class="fa fa-egg"></i> Ovulación</div>
+        <div class="fase fase-4"><i class="fa fa-moon"></i> Lútea</div>
+      </div>
+      <canvas id="graficoCiclo"></canvas>
+      <div id="proximosPeriodos"><i class="fa fa-calendar-check"></i></div>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa fa-exclamation-triangle"></i> Síntomas</h3>
+      <div class="sintomas-grid">
+        <div class="sintoma-tag" data-sintoma="dolor"><i class="fa fa-medkit"></i> Dolor</div>
+        <div class="sintoma-tag" data-sintoma="inflamacion"><i class="fa fa-burn"></i> Inflamación</div>
+        <div class="sintoma-tag" data-sintoma="cansancio"><i class="fa fa-bed"></i> Cansancio</div>
+        <div class="sintoma-tag" data-sintoma="antojos"><i class="fa fa-utensils"></i> Antojos</div>
+        <div class="sintoma-tag" data-sintoma="acne"><i class="fa fa-circle"></i> Acné</div>
+        <div class="sintoma-tag" data-sintoma="dolorcabeza"><i class="fa fa-head-side-cough"></i> Dolor cabeza</div>
+        <div class="sintoma-tag" data-sintoma="mareos"><i class="fa fa-dizzy"></i> Mareos</div>
+        <div class="sintoma-tag" data-sintoma="cambiosanimo"><i class="fa fa-face-grin-beam-sweat"></i> Cambios ánimo</div>
+        <div class="sintoma-tag" data-sintoma="otro"><i class="fa fa-plus-circle"></i> Otro</div>
+      </div>
+      <textarea id="notasCiclo" rows="3" placeholder="Describe tus síntomas o notas"></textarea>
+      <button onclick="guardarSintomasCiclo()"><i class="fa fa-save"></i> Guardar síntomas</button>
+    </div>
+  </div>
+
+  <div id="embarazo" class="seccion">
+    <div class="card">
+      <h2><i class="fa fa-baby"></i> Embarazo</h2>
+      <div class="form-group">
+        <label><i class="fa fa-calendar-alt"></i> Fecha de última menstruación:</label>
+        <input type="date" id="fechaUltimoPeriodo" />
+      </div>
+      <div class="form-group">
+        <label><i class="fa fa-calendar-plus"></i> Fecha probable de parto (opcional):</label>
+        <input type="date" id="fechaProbableParto" />
+      </div>
+      <button onclick="calcularEmbarazo()"><i class="fa fa-calculator"></i> Calcular</button>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa fa-tasks"></i> Tu progreso</h3>
+      <div id="infoEmbarazo"></div>
+      <div class="progreso-container">
+        <div class="progreso-barra" id="progresoEmbarazo"></div>
+      </div>
+      <canvas id="graficoEmbarazo"></canvas>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa fa-notes-medical"></i> Seguimiento</h3>
+      
+      <div class="tabs">
+        <div class="tab activo" data-tab="peso"><i class="fa fa-weight"></i> Peso</div>
+        <div class="tab" data-tab="movimientos"><i class="fa fa-hand-wave"></i> Movimientos</div>
+        <div class="tab" data-tab="contracciones"><i class="fa fa-heartbeat"></i> Contracciones</div>
+      </div>
+      
+      <div class="tab-content activo" id="tab-peso">
+        <div class="form-group">
+          <label><i class="fa fa-weight-scale"></i> Peso actual (kg):</label>
+          <input type="number" step="0.1" id="pesoEmbarazo" />
+        </div>
+        <div class="form-group">
+          <label><i class="fa fa-calendar-alt"></i> Fecha:</label>
+          <input type="date" id="fechaPesoEmbarazo" />
+        </div>
+        <button onclick="guardarPesoEmbarazo()"><i class="fa fa-save"></i> Guardar peso</button>
+      </div>
+      
+      <div class="tab-content" id="tab-movimientos">
+        <div class="form-group">
+          <label><i class="fa fa-hand-point-up"></i> Intensidad de movimientos:</label>
+          <select id="intensidadMovimientos">
+            <option value="suave">Suaves</option>
+            <option value="moderado">Moderados</option>
+            <option value="fuerte">Fuertes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="fa fa-stopwatch"></i> Duración (minutos):</label>
+          <input type="number" id="duracionMovimientos" min="1" max="60" />
+        </div>
+        <button onclick="guardarMovimientos()"><i class="fa fa-save"></i> Guardar movimientos</button>
+      </div>
+      
+      <div class="tab-content" id="tab-contracciones">
+        <div class="form-group">
+          <label><i class="fa fa-hourglass-half"></i> Duración (segundos):</label>
+          <input type="number" id="duracionContracciones" min="1" max="120" />
+        </div>
+        <div class="form-group">
+          <label><i class="fa fa-clock"></i> Frecuencia (minutos entre contracciones):</label>
+          <input type="number" id="frecuenciaContracciones" min="1" max="60" />
+        </div>
+        <button onclick="guardarContracciones()"><i class="fa fa-save"></i> Guardar contracciones</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="salud" class="seccion">
+    <div class="card">
+      <h2><i class="fa fa-heartbeat"></i> Mi Salud</h2>
+      
+      <div class="tabs">
+        <div class="tab activo" data-tab="metricas"><i class="fa fa-tachometer-alt"></i> Métricas</div>
+        <div class="tab" data-tab="diario"><i class="fa fa-book-medical"></i> Diario</div>
+        <div class="tab" data-tab="medicamentos"><i class="fa fa-pills"></i> Medicamentos</div>
+      </div>
+      
+      <div class="tab-content activo" id="tab-metricas">
+        <div class="form-group">
+          <label><i class="fa fa-weight"></i> Peso (kg):</label>
+          <input type="number" step="0.1" id="peso" />
+        </div>
+        <div class="form-group">
+          <label><i class="fa fa-ruler-vertical"></i> Altura (cm):</label>
+          <input type="number" id="altura" />
+        </div>
+        <div class="form-group">
+          <label><i class="fa fa-heartbeat"></i> Presión arterial (sistólica/diastólica):</label>
+          <div style="display: flex; gap: 10px;">
+            <input type="number" id="presionSistolica" placeholder="120" />
+            <input type="number" id="presionDiastolica" placeholder="80" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label><i class="fa fa-pulse"></i> Ritmo cardíaco (ppm):</label>
+          <input type="number" id="ritmoCardiaco" />
+        </div>
+        <button onclick="guardarMetricas()"><i class="fa fa-save"></i> Guardar métricas</button>
+      </div>
+      
+      <div class="tab-content" id="tab-diario">
+        <div class="form-group">
+          <label><i class="fa fa-comment-dots"></i> ¿Cómo te sientes hoy?</label>
+          <textarea id="notasSalud" rows="4" placeholder="Dolor, estado de ánimo, síntomas, etc."></textarea>
+        </div>
+        <div class="form-group">
+          <label><i class="fa fa-calendar-alt"></i> Fecha:</label>
+          <input type="date" id="fechaNotas" />
+        </div>
+        <button onclick="guardarSalud()"><i class="fa fa-save"></i> Guardar en diario</button>
+      </div>
+      
+      <div class="tab-content" id="tab-medicamentos">
+        <div class="form-group">
+          <label><i class="fa fa-capsules"></i> Nombre del medicamento:</label>
+          <input type="text" id="nombreMedicamento" placeholder="Paracetamol, Ibuprofeno, etc." />
+        </div>
+        <div class="form-group">
+          <label><i class="fa fa-prescription-bottle"></i> Dosis:</label>
+          <input type="text" id="dosisMedicamento" placeholder="500mg, 1 pastilla, etc." />
+        </div>
+        <div class="form-group">
+          <label><i class="fa fa-clock"></i> Frecuencia:</label>
+          <select id="frecuenciaMedicamento">
+            <option value="1">Una vez al día</option>
+            <option value="2">Dos veces al día</option>
+            <option value="3">Tres veces al día</option>
+            <option value="4">Cuatro veces al día</option>
+            <option value="segun">Según necesidad</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="fa fa-bell"></i> Recordatorio:</label>
+          <div class="config-item">
+            <span>Activar recordatorio</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="recordatorioMedicamento">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <button onclick="guardarMedicamento()"><i class="fa fa-save"></i> Guardar medicamento</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa fa-history"></i> Historial</h3>
+      <canvas id="graficoSalud"></canvas>
+      <div id="historySalud" class="no-data">
+        <i class="fa fa-notes-medical"></i>
+        <p>No hay datos de salud registrados</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="perfil" class="seccion">
+    <div class="card">
+      <div class="avatar-container">
+        <div class="avatar" id="avatarContainer">
+          <i class="fa fa-user"></i>
+        </div>
+      </div>
+      <div class="foto-row">
+        <div class="foto-btn" id="cambiarFoto">
+          <i class="fa fa-camera"></i>
+          <div>Cambiar</div>
+        </div>
+        <div class="foto-btn" id="quitarFoto">
+          <i class="fa fa-trash"></i>
+          <div>Quitar</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa fa-id-card"></i> Datos Personales</h2>
+      <div class="form-group">
+        <label><i class="fa fa-signature"></i> Nombre:</label>
+        <input type="text" id="nombre" placeholder="Tu nombre" />
+      </div>
+      <div class="form-group">
+        <label><i class="fa fa-user-tag"></i> Apellidos:</label>
+        <input type="text" id="apellidos" placeholder="Tus apellidos" />
+      </div>
+      <div class="form-group">
+        <label><i class="fa fa-birthday-cake"></i> Fecha de nacimiento:</label>
+        <input type="date" id="fechaNacimiento" />
+      </div>
+      <div class="form-group">
+        <label><i class="fa fa-envelope"></i> Correo electrónico:</label>
+        <input type="email" id="correo" placeholder="correo@ejemplo.com" />
+      </div>
+      <div class="form-group">
+        <label><i class="fa fa-tint"></i> Grupo sanguíneo:</label>
+        <select id="grupoSanguineo">
+          <option value="">Seleccionar</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+      </div>
+      <button onclick="guardarPerfil()"><i class="fa fa-save"></i> Guardar perfil</button>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa fa-file-medical-alt"></i> Información Médica</h2>
+      <div class="form-group">
+        <label><i class="fa fa-allergies"></i> Alergias:</label>
+        <textarea id="alergias" rows="2" placeholder="Medicamentos, alimentos, etc."></textarea>
+      </div>
+      <div class="form-group">
+        <label><i class="fa fa-heartbeat"></i> Condiciones médicas:</label>
+        <textarea id="condicionesMedicas" rows="2" placeholder="Diabetes, hipertensión, etc."></textarea>
+      </div>
+      <div class="form-group">
+        <label><i class="fa fa-prescription-bottle"></i> Medicamentos habituales:</label>
+        <textarea id="medicamentosHabituales" rows="2" placeholder="Incluyendo vitaminas y suplementos"></textarea>
+      </div>
+      <div class="form-group">
+        <label><i class="fa fa-user-friends"></i> Contacto de emergencia:</label>
+        <input type="text" id="contactoEmergenciaNombre" placeholder="Nombre" />
+        <input type="tel" id="contactoEmergenciaTelefono" placeholder="Teléfono" />
+      </div>
+      <button onclick="guardarInfoMedica()"><i class="fa fa-save"></i> Guardar información médica</button>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa fa-cogs"></i> Configuración</h2>
+      <div class="form-group">
+        <div class="config-item">
+          <span><i class="fa fa-bell"></i> Notificaciones</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="configNotificaciones" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="config-item">
+          <span><i class="fa fa-moon"></i> Modo oscuro</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="configModoOscuro">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="config-item">
+          <span><i class="fa fa-calendar-check"></i> Recordatorios de ciclo</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="configRecordatoriosCiclo" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="config-item">
+          <span><i class="fa fa-ruler-combined"></i> Unidades de medida</span>
+          <select id="configUnidades">
+            <option value="metrico">Métrico (kg, cm)</option>
+            <option value="imperial">Imperial (lb, in)</option>
+          </select>
+        </div>
+        <div class="config-item">
+          <span><i class="fa fa-globe"></i> Idioma</span>
+          <select id="configIdioma">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+          </select>
+        </div>
+      </div>
+      <button onclick="guardarConfiguracion()"><i class="fa fa-save"></i> Guardar configuración</button>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa fa-database"></i> Gestión de datos</h2>
+      <p>Puedes exportar tus datos o eliminar toda la información guardada en la aplicación.</p>
+      <div class="btn-group">
+        <button onclick="exportarDatos()" class="outline"><i class="fa fa-download"></i> Exportar datos</button>
+        <button onclick="importarDatos()" class="outline"><i class="fa fa-upload"></i> Importar datos</button>
+      </div>
+      <button onclick="resetDatos()" class="danger"><i class="fa fa-trash-alt"></i> Eliminar todos los datos</button>
+      <small>App versión 1.0.0 - Powered By Andres Alvarez </small>
+    </div>
+  </div>
+
+  <div class="nav-inferior">
+    <a class="nav-btn activo" data-target="inicio">
+      <i class="fa fa-home"></i>
+      <span>Inicio</span>
+    </a>
+    <a class="nav-btn" data-target="ciclo">
+      <i class="fa fa-calendar"></i>
+      <span>Ciclo</span>
+    </a>
+    <a class="nav-btn" data-target="embarazo">
+      <i class="fa fa-heartbeat"></i>
+      <span>Embarazo</span>
+    </a>
+    <a class="nav-btn" data-target="salud">
+      <i class="fa fa-plus-square"></i>
+      <span>Salud</span>
+    </a>
+    <a class="nav-btn" data-target="perfil">
+      <i class="fa fa-user"></i>
+      <span>Perfil</span>
+    </a>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+  <script>
+    // Frases del día
+    const frases = [
+      "Tu bienestar es tu mayor riqueza.",
+      "El autocuidado es un acto de amor propio.",
+      "Respira profundo. Eres más fuerte de lo que crees.",
+      "Escucha a tu cuerpo, él sabe lo que necesitas.",
+      "Cada día es una oportunidad para cuidarte mejor.",
+      "Tu salud emocional es tan importante como la física.",
+      "Lo que haces hoy por tu cuerpo, él lo recordará mañana.",
+      "Pequeños cambios, grandes resultados.",
+      "La mejor medicina para tu cuerpo es amarlo tal como es.",
+      "Cuida tu cuerpo, es el único lugar que tienes para vivir."
+    ];
+
+    // Obtener fecha actual
+    const hoy = new Date();
+    const fechaHoy = hoy.toISOString().split('T')[0];
+
+    // Inicialización
+    $(document).ready(function() {
+      // Cargar datos del usuario
+      cargarDatosUsuario();
+      
+      // Mostrar frase aleatoria del día
+      const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+      $('#fraseDelDia').text(fraseAleatoria);
+      
+      // Actualizar fecha en los campos
+      $('#fechaNotas').val(fechaHoy);
+      $('#fechaPesoEmbarazo').val(fechaHoy);
+      
+      // Actualizar resumen
+      actualizarResumen();
+      
+      // Configurar navegación
+      configurarNavegacion();
+      
+      // Configurar tabs
+      configurarTabs();
+      
+      // Configurar estado de ánimo
+      configurarEstadoAnimo();
+      
+      // Configurar síntomas
+      configurarSintomas();
+      
+      // Cargar recordatorios
+      cargarRecordatorios();
+      
+      // Comprobar modo oscuro
+      comprobarModoOscuro();
+      
+      // Configurar carga de foto de perfil
+      configurarFotoPerfil();
+    });
+
+    // Navegación
+    function configurarNavegacion() {
+      $('.nav-btn').click(function () {
+        var target = $(this).data('target');
+        $('.seccion').removeClass('activa');
+        $('#' + target).addClass('activa');
+        $('.nav-btn').removeClass('activo');
+        $(this).addClass('activo');
+      });
+    }
+
+    // Configurar tabs
+    function configurarTabs() {
+      $('.tab').click(function() {
+        const tabId = $(this).data('tab');
+        $(this).siblings().removeClass('activo');
+        $(this).addClass('activo');
+        $(this).parent().siblings('.tab-content').removeClass('activo');
+        $(`#tab-${tabId}`).addClass('activo');
+      });
+    }
+
+    // Estado de ánimo
+    function configurarEstadoAnimo() {
+      $('.estado-btn').click(function() {
+        $('.estado-btn').removeClass('seleccionado');
+        $(this).addClass('seleccionado');
+      });
+      
+      $('#guardarAnimo').click(function() {
+        const estadoSeleccionado = $('.estado-btn.seleccionado').data('valor');
+        if (estadoSeleccionado) {
+          localStorage.setItem('estadoAnimo', estadoSeleccionado);
+          localStorage.setItem('fechaEstadoAnimo', fechaHoy);
+          mostrarMensaje('Estado guardado');
+          actualizarResumen();
+        } else {
+          mostrarMensaje('Selecciona cómo te sientes');
+        }
+      });
+    }
+
+    // Síntomas
+    function configurarSintomas() {
+      $('.sintoma-tag').click(function() {
+        $(this).toggleClass('activo');
+      });
+    }
+
+    // Mostrar mensaje flotante
+    function mostrarMensaje(texto) {
+      $('#mensaje-flotante').text(texto).fadeIn();
+      setTimeout(function() {
+        $('#mensaje-flotante').fadeOut();
+      }, 2000);
+    }
+
+    // Cargar datos del usuario
+    function cargarDatosUsuario() {
+      const nombre = localStorage.getItem('nombre') || '';
+      if (nombre) {
+        $('#nombre').val(nombre);
+        $('#headerNombre').text(nombre);
+        $('#saludoUsuaria').html(`<p>Hola, <strong>${nombre}</strong>. ¿Cómo estás hoy?</p>`);
+      } else {
+        $('#saludoUsuaria').html(`<p>Completa tu perfil para personalizar la app</p>`);
+      }
+      
+      // Cargar resto de datos del perfil
+      $('#apellidos').val(localStorage.getItem('apellidos') || '');
+      $('#fechaNacimiento').val(localStorage.getItem('fechaNacimiento') || '');
+      $('#correo').val(localStorage.getItem('correo') || '');
+      $('#grupoSanguineo').val(localStorage.getItem('grupoSanguineo') || '');
+      $('#alergias').val(localStorage.getItem('alergias') || '');
+      $('#condicionesMedicas').val(localStorage.getItem('condicionesMedicas') || '');
+      $('#medicamentosHabituales').val(localStorage.getItem('medicamentosHabituales') || '');
+      $('#contactoEmergenciaNombre').val(localStorage.getItem('contactoEmergenciaNombre') || '');
+      $('#contactoEmergenciaTelefono').val(localStorage.getItem('contactoEmergenciaTelefono') || '');
+      
+      // Cargar configuraciones
+      $('#configNotificaciones').prop('checked', localStorage.getItem('configNotificaciones') !== 'false');
+      $('#configModoOscuro').prop('checked', localStorage.getItem('configModoOscuro') === 'true');
+      $('#configRecordatoriosCiclo').prop('checked', localStorage.getItem('configRecordatoriosCiclo') !== 'false');
+      $('#configUnidades').val(localStorage.getItem('configUnidades') || 'metrico');
+      $('#configIdioma').val(localStorage.getItem('configIdioma') || 'es');
+      
+      // Cargar datos de salud
+      $('#peso').val(localStorage.getItem('peso') || '');
+      $('#altura').val(localStorage.getItem('altura') || '');
+      $('#presionSistolica').val(localStorage.getItem('presionSistolica') || '');
+      $('#presionDiastolica').val(localStorage.getItem('presionDiastolica') || '');
+      $('#ritmoCardiaco').val(localStorage.getItem('ritmoCardiaco') || '');
+      $('#notasSalud').val(localStorage.getItem('notasSalud') || '');
+      
+      // Cargar datos de ciclo
+      $('#fechaCiclo').val(localStorage.getItem('cicloFecha') || '');
+      $('#duracionCiclo').val(localStorage.getItem('duracionCiclo') || '28');
+      $('#duracionPeriodo').val(localStorage.getItem('duracionPeriodo') || '5');
+      
+      // Cargar datos de embarazo
+      $('#fechaUltimoPeriodo').val(localStorage.getItem('fechaUltimoPeriodo') || '');
+      $('#fechaProbableParto').val(localStorage.getItem('fechaProbableParto') || '');
+      
+      // Cargar avatar
+      const avatarUrl = localStorage.getItem('avatarUrl');
+      if (avatarUrl) {
+        $('#avatarContainer').html(`<img src="${avatarUrl}" alt="Avatar">`);
+      }
+    }
+
+    // Actualizar resumen
+    function actualizarResumen() {
+      // Ciclo
+      const fechaCiclo = localStorage.getItem('cicloFecha');
+      if (fechaCiclo) {
+        const fechaUltimoObj = new Date(fechaCiclo);
+        const hoy = new Date();
+        const diffTime = Math.abs(hoy - fechaUltimoObj);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        $('#resumeCiclo').text(`Día ${diffDays}`);
+      }
+      
+      // Estado
+      const estado = localStorage.getItem('estadoAnimo');
+      if (estado) {
+        const emojis = ['', '😞', '😐', '🙂', '😊', '😃'];
+        $('#resumeEstado').text(emojis[estado]);
+      }
+      
+      // Peso e IMC
+      const peso = localStorage.getItem('peso');
+      const altura = localStorage.getItem('altura');
+      if (peso) $('#resumePeso').text(`${peso} kg`);
+      if (peso && altura) {
+        const alturaM = altura / 100;
+        const imc = (peso / (alturaM * alturaM)).toFixed(1);
+        $('#resumeIMC').text(imc);
+      }
+    }
+
+    // Guardar ciclo menstrual
+    function guardarCiclo() {
+      const fecha = document.getElementById('fechaCiclo').value;
+      const duracionCiclo = document.getElementById('duracionCiclo').value;
+      const duracionPeriodo = document.getElementById('duracionPeriodo').value;
+      
+      if (!fecha) {
+        mostrarMensaje('Selecciona una fecha');
+        return;
+      }
+      
+      localStorage.setItem('cicloFecha', fecha);
+      localStorage.setItem('duracionCiclo', duracionCiclo);
+      localStorage.setItem('duracionPeriodo', duracionPeriodo);
+      
+      mostrarMensaje('Ciclo guardado');
+      dibujarGraficoCiclo();
+      calcularProximosPeriodos();
+      actualizarResumen();
+    }
+
+    function dibujarGraficoCiclo() {
+      const fecha = localStorage.getItem('cicloFecha');
+      const duracionCiclo = parseInt(localStorage.getItem('duracionCiclo') || '28');
+      const duracionPeriodo = parseInt(localStorage.getItem('duracionPeriodo') || '5');
+      
+      const ctx = document.getElementById('graficoCiclo').getContext('2d');
+      ctx.clearRect(0, 0, 600, 180);
+      
+      if (fecha) {
+        const fechaInicio = new Date(fecha);
+        const hoy = new Date();
+        const diffTime = hoy - fechaInicio;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const diaActual = diffDays % duracionCiclo;
+        
+        // Dibujar línea de tiempo
+        ctx.fillStyle = "#f0f0f0";
+        ctx.fillRect(20, 40, 260, 30);
+        
+        // Dibujar fases
+        const anchoFase1 = (duracionPeriodo / duracionCiclo) * 260;
+        const anchoFase2 = ((14 - duracionPeriodo) / duracionCiclo) * 260;
+        const anchoFase3 = (2 / duracionCiclo) * 260;
+        const anchoFase4 = ((duracionCiclo - 16) / duracionCiclo) * 260;
+        
+        ctx.fillStyle = "#f8bbd0"; // Menstruación
+        ctx.fillRect(20, 40, anchoFase1, 30);
+        
+        ctx.fillStyle = "#e1bee7"; // Folicular
+        ctx.fillRect(20 + anchoFase1, 40, anchoFase2, 30);
+        
+        ctx.fillStyle = "#bbdefb"; // Ovulación
+        ctx.fillRect(20 + anchoFase1 + anchoFase2, 40, anchoFase3, 30);
+        
+        ctx.fillStyle = "#c8e6c9"; // Lútea
+        ctx.fillRect(20 + anchoFase1 + anchoFase2 + anchoFase3, 40, anchoFase4, 30);
+        
+        // Dibujar día actual
+        const posicionActual = 20 + ((diaActual / duracionCiclo) * 260);
+        ctx.fillStyle = "#e91e63";
+        ctx.beginPath();
+        ctx.arc(posicionActual, 55, 10, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Dibujar textos
+        ctx.fillStyle = "#333";
+        ctx.font = "12px Arial";
+        ctx.fillText(`Día ${diaActual} de ${duracionCiclo}`, 20, 100);
+        
+        let faseActual = "";
+        if (diaActual <= duracionPeriodo) {
+          faseActual = "Menstruación";
+        } else if (diaActual <= 14) {
+          faseActual = "Fase Folicular";
+        } else if (diaActual <= 16) {
+          faseActual = "Ovulación";
+        } else {
+          faseActual = "Fase Lútea";
+        }
+        
+        ctx.fillText(`Fase actual: ${faseActual}`, 20, 120);
+        ctx.fillText(`Último periodo: ${formatearFecha(fecha)}`, 20, 140);
+      }
+    }
+
+    function calcularProximosPeriodos() {
+      const fecha = localStorage.getItem('cicloFecha');
+      const duracionCiclo = parseInt(localStorage.getItem('duracionCiclo') || '28');
+      
+      if (fecha) {
+        const fechaInicio = new Date(fecha);
+        let html = '<h4>Próximos periodos:</h4><ul>';
+        
+        for (let i = 1; i <= 3; i++) {
+          const proxFecha = new Date(fechaInicio);
+          proxFecha.setDate(proxFecha.getDate() + (duracionCiclo * i));
+          html += `<li>${formatearFecha(proxFecha.toISOString().split('T')[0])}</li>`;
+        }
+        
+        html += '</ul>';
+        $('#proximosPeriodos').html(html);
+      }
+    }
+
+    // Guardar síntomas del ciclo
+    function guardarSintomasCiclo() {
+      const sintomasActivos = [];
+      $('.sintoma-tag.activo').each(function() {
+        sintomasActivos.push($(this).data('sintoma'));
+      });
+      
+      const notas = $('#notasCiclo').val();
+      
+      const registro = {
+        fecha: fechaHoy,
+        sintomas: sintomasActivos,
+        notas: notas
+      };
+      
+      let registrosAnteriores = JSON.parse(localStorage.getItem('registrosSintomas') || '[]');
+      registrosAnteriores.push(registro);
+      localStorage.setItem('registrosSintomas', JSON.stringify(registrosAnteriores));
+      
+      mostrarMensaje('Síntomas guardados');
+      $('#notasCiclo').val('');
+      $('.sintoma-tag').removeClass('activo');
+    }
+
+    // Calcular embarazo
+    function calcularEmbarazo() {
+      const fechaUltimoPeriodo = $('#fechaUltimoPeriodo').val();
+      const fechaProbableParto = $('#fechaProbableParto').val();
+      
+      if (!fechaUltimoPeriodo) {
+        mostrarMensaje('Ingresa la fecha del último periodo');
+        return;
+      }
+      
+      localStorage.setItem('fechaUltimoPeriodo', fechaUltimoPeriodo);
+      if (fechaProbableParto) {
+        localStorage.setItem('fechaProbableParto', fechaProbableParto);
+      }
+      
+      const fechaUltimoObj = new Date(fechaUltimoPeriodo);
+      let fechaParto;
+      
+      if (fechaProbableParto) {
+        fechaParto = new Date(fechaProbableParto);
+      } else {
+        fechaParto = new Date(fechaUltimoObj);
+        fechaParto.setDate(fechaParto.getDate() + 280); // 40 semanas
+      }
+      
+      const hoy = new Date();
+      const diffTime = hoy - fechaUltimoObj;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const semanas = Math.floor(diffDays / 7);
+      const dias = diffDays % 7;
+      
+      const tiempoRestante = fechaParto - hoy;
+      const diasRestantes = Math.ceil(tiempoRestante / (1000 * 60 * 60 * 24));
+      const semanasRestantes = Math.floor(diasRestantes / 7);
+      const diasRestantesMod = diasRestantes % 7;
+      
+      // Actualizar información
+      let html = `<p>Estás en la semana <strong>${semanas}</strong> y <strong>${dias}</strong> días</p>`;
+      html += `<p>Faltan <strong>${semanasRestantes}</strong> semanas y <strong>${diasRestantesMod}</strong> días para la fecha estimada de parto</p>`;
+      $('#infoEmbarazo').html(html);
+      
+      // Actualizar barra de progreso
+      const progreso = (semanas / 40) * 100;
+      $('#progresoEmbarazo').css('width', `${progreso}%`);
+      
+      // Dibujar gráfico
+      dibujarGraficoEmbarazo(semanas);
+      
+      mostrarMensaje('Cálculo realizado');
+    }
+
+    function dibujarGraficoEmbarazo(semanas) {
+      const ctx = document.getElementById('graficoEmbarazo').getContext('2d');
+      ctx.clearRect(0, 0, 600, 180);
+      
+      // Dibujar línea de tiempo
+      ctx.fillStyle = "#f0f0f0";
+      ctx.fillRect(20, 40, 260, 30);
+      
+      // Dibujar trimestres
+      ctx.fillStyle = "#bbdefb"; // Primer trimestre
+      ctx.fillRect(20, 40, 260/3, 30);
+      
+      ctx.fillStyle = "#c8e6c9"; // Segundo trimestre
+      ctx.fillRect(20 + 260/3, 40, 260/3, 30);
+      
+      ctx.fillStyle = "#ffcc80"; // Tercer trimestre
+      ctx.fillRect(20 + 2*260/3, 40, 260/3, 30);
+      
+      // Dibujar semana actual
+      const posicionActual = 20 + ((semanas / 40) * 260);
+      ctx.fillStyle = "#e91e63";
+      ctx.beginPath();
+      ctx.arc(posicionActual, 55, 10, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Dibujar textos
+      ctx.fillStyle = "#333";
+      ctx.font = "12px Arial";
+      ctx.fillText(`Semana ${semanas} de 40`, 20, 100);
+      
+      let trimestre = semanas <= 13 ? "Primer" : semanas <= 26 ? "Segundo" : "Tercer";
+      ctx.fillText(`${trimestre} trimestre`, 20, 120);
+      
+      // Dibujar etiquetas de trimestres
+      ctx.font = "10px Arial";
+      ctx.fillText("Trim. 1", 20 + 260/6 - 20, 35);
+      ctx.fillText("Trim. 2", 20 + 260/2 - 20, 35);
+      ctx.fillText("Trim. 3", 20 + 5*260/6 - 20, 35);
+    }
+
+    // Guardar peso de embarazo
+    function guardarPesoEmbarazo() {
+      const peso = $('#pesoEmbarazo').val();
+      const fecha = $('#fechaPesoEmbarazo').val();
+      
+      if (!peso || !fecha) {
+        mostrarMensaje('Completa todos los campos');
+        return;
+      }
+      
+      const registro = {
+        fecha: fecha,
+        peso: peso
+      };
+      
+      let registrosAnteriores = JSON.parse(localStorage.getItem('registrosPesoEmbarazo') || '[]');
+      registrosAnteriores.push(registro);
+      localStorage.setItem('registrosPesoEmbarazo', JSON.stringify(registrosAnteriores));
+      
+      mostrarMensaje('Peso guardado');
+      $('#pesoEmbarazo').val('');
+    }
+
+    // Guardar movimientos fetales
+    function guardarMovimientos() {
+      const intensidad = $('#intensidadMovimientos').val();
+      const duracion = $('#duracionMovimientos').val();
+      
+      if (!duracion) {
+        mostrarMensaje('Indica la duración');
+        return;
+      }
+      
+      const registro = {
+        fecha: fechaHoy,
+        hora: new Date().toTimeString().slice(0, 5),
+        intensidad: intensidad,
+        duracion: duracion
+      };
+      
+      let registrosAnteriores = JSON.parse(localStorage.getItem('registrosMovimientos') || '[]');
+      registrosAnteriores.push(registro);
+      localStorage.setItem('registrosMovimientos', JSON.stringify(registrosAnteriores));
+      
+      mostrarMensaje('Movimientos guardados');
+      $('#duracionMovimientos').val('');
+    }
+
+    // Guardar contracciones
+    function guardarContracciones() {
+      const duracion = $('#duracionContracciones').val();
+      const frecuencia = $('#frecuenciaContracciones').val();
+      
+      if (!duracion || !frecuencia) {
+        mostrarMensaje('Completa todos los campos');
+        return;
+      }
+      
+      const registro = {
+        fecha: fechaHoy,
+        hora: new Date().toTimeString().slice(0, 5),
+        duracion: duracion,
+        frecuencia: frecuencia
+      };
+      
+      let registrosAnteriores = JSON.parse(localStorage.getItem('registrosContracciones') || '[]');
+      registrosAnteriores.push(registro);
+      localStorage.setItem('registrosContracciones', JSON.stringify(registrosAnteriores));
+      
+      mostrarMensaje('Contracciones guardadas');
+      $('#duracionContracciones').val('');
+      $('#frecuenciaContracciones').val('');
+    }
+
+    // Guardar métricas de salud
+    function guardarMetricas() {
+      const peso = $('#peso').val();
+      const altura = $('#altura').val();
+      const presionSistolica = $('#presionSistolica').val();
+      const presionDiastolica = $('#presionDiastolica').val();
+      const ritmoCardiaco = $('#ritmoCardiaco').val();
+      
+      if (peso) localStorage.setItem('peso', peso);
+      if (altura) localStorage.setItem('altura', altura);
+      if (presionSistolica) localStorage.setItem('presionSistolica', presionSistolica);
+      if (presionDiastolica) localStorage.setItem('presionDiastolica', presionDiastolica);
+      if (ritmoCardiaco) localStorage.setItem('ritmoCardiaco', ritmoCardiaco);
+      
+      const registro = {
+        fecha: fechaHoy,
+        peso: peso || null,
+        altura: altura || null,
+        presionSistolica: presionSistolica || null,
+        presionDiastolica: presionDiastolica || null,
+        ritmoCardiaco: ritmoCardiaco || null
+      };
+      
+      let registrosAnteriores = JSON.parse(localStorage.getItem('registrosMetricas') || '[]');
+      registrosAnteriores.push(registro);
+      localStorage.setItem('registrosMetricas', JSON.stringify(registrosAnteriores));
+      
+      mostrarMensaje('Métricas guardadas');
+      actualizarResumen();
+      dibujarGraficoSalud();
+    }
+
+    function dibujarGraficoSalud() {
+      const registros = JSON.parse(localStorage.getItem('registrosMetricas') || '[]');
+      
+      if (registros.length > 0) {
+        const ctx = document.getElementById('graficoSalud').getContext('2d');
+        ctx.clearRect(0, 0, 600, 180);
+        
+        // Obtener últimos 5 registros
+        const ultimosRegistros = registros.slice(-5);
+        
+        // Dibujar gráfico de peso
+        ctx.fillStyle = "#333";
+        ctx.font = "14px Arial";
+        ctx.fillText("Historial de peso (kg)", 20, 20);
+        
+        const maxPeso = Math.max(...ultimosRegistros.filter(r => r.peso).map(r => parseFloat(r.peso))) + 10;
+        const minPeso = Math.min(...ultimosRegistros.filter(r => r.peso).map(r => parseFloat(r.peso))) - 10;
+        const rangoPeso = maxPeso - minPeso;
+        
+        // Dibujar líneas de fondo
+        ctx.strokeStyle = "#eee";
+        ctx.beginPath();
+        for (let i = 0; i <= 4; i++) {
+          const y = 40 + (i * 25);
+          ctx.moveTo(20, y);
+          ctx.lineTo(280, y);
+        }
+        ctx.stroke();
+        
+        // Dibujar puntos y líneas
+        ctx.strokeStyle = "#e91e63";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        
+        ultimosRegistros.forEach((registro, index) => {
+          if (registro.peso) {
+            const x = 50 + (index * 50);
+            const altura = 140 - (((registro.peso - minPeso) / rangoPeso) * 100);
+            
+            if (index === 0) {
+              ctx.moveTo(x, altura);
+            } else {
+              ctx.lineTo(x, altura);
+            }
+            
+            // Dibujar fecha abreviada
+            ctx.fillStyle = "#888";
+            ctx.font = "10px Arial";
+            const fechaCorta = registro.fecha.slice(5);
+            ctx.fillText(fechaCorta, x - 10, 155);
+          }
+        });
+        
+        ctx.stroke();
+        
+        // Dibujar puntos
+        ultimosRegistros.forEach((registro, index) => {
+          if (registro.peso) {
+            const x = 50 + (index * 50);
+            const altura = 140 - (((registro.peso - minPeso) / rangoPeso) * 100);
+            
+            ctx.fillStyle = "#e91e63";
+            ctx.beginPath();
+            ctx.arc(x, altura, 4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Mostrar valor
+            ctx.fillStyle = "#333";
+            ctx.font = "10px Arial";
+            ctx.fillText(registro.peso, x - 5, altura - 15);
+          }
+        });
+      } else {
+        $('#historySalud').show();
+      }
+    }
+
+    // Guardar datos del diario de salud
+    function guardarSalud() {
+      const nota = $('#notasSalud').val();
+      const fecha = $('#fechaNotas').val();
+      
+      const registro = {
+        fecha: fecha,
+        nota: nota
+      };
+      
+      let registrosAnteriores = JSON.parse(localStorage.getItem('registrosDiarioSalud') || '[]');
+      registrosAnteriores.push(registro);
+      localStorage.setItem('registrosDiarioSalud', JSON.stringify(registrosAnteriores));
+      
+      mostrarMensaje('Entrada guardada en el diario');
+      $('#notasSalud').val('');
+    }
+
+    // Guardar medicamento
+    function guardarMedicamento() {
+      const nombre = $('#nombreMedicamento').val();
+      const dosis = $('#dosisMedicamento').val();
+      const frecuencia = $('#frecuenciaMedicamento').val();
+      const recordatorio = $('#recordatorioMedicamento').is(':checked');
+      
+      if (!nombre || !dosis || !frecuencia) {
+        mostrarMensaje('Completa todos los campos');
+        return;
+      }
+      
+      const registro = {
+        nombre: nombre,
+        dosis: dosis,
+        frecuencia: frecuencia,
+        recordatorio: recordatorio
+      };
+      
+      let registrosAnteriores = JSON.parse(localStorage.getItem('registrosMedicamentos') || '[]');
+      registrosAnteriores.push(registro);
+      localStorage.setItem('registrosMedicamentos', JSON.stringify(registrosAnteriores));
+      
+      mostrarMensaje('Medicamento guardado');
+      $('#nombreMedicamento').val('');
+      $('#dosisMedicamento').val('');
+      $('#frecuenciaMedicamento').val('1');
+      $('#recordatorioMedicamento').prop('checked', false);
+      
+      // Crear recordatorio (opcional)
+      if (recordatorio) {
+        crearRecordatorio(nombre, dosis, frecuencia);
+      }
+    }
+
+    // Crear recordatorio (simulado)
+    function crearRecordatorio(nombre, dosis, frecuencia) {
+      // En una app real, esto se haría con una API de notificaciones push
+      // Aquí, solo simulamos el recordatorio con un setTimeout
+      let mensaje = `Recordatorio: Tomar ${nombre}, ${dosis}, ${frecuencia}.`;
+      let tiempo = 0;
+      
+      switch (frecuencia) {
+        case '1': tiempo = 24 * 60 * 60 * 1000; break; // 1 día
+        case '2': tiempo = 12 * 60 * 60 * 1000; break; // 12 horas
+        case '3': tiempo = 8 * 60 * 60 * 1000; break; // 8 horas
+        case '4': tiempo = 6 * 60 * 60 * 1000; break; // 6 horas
+        case 'segun': tiempo = 60 * 60 * 1000; break; // 1 hora (simulación)
+      }
+      
+      setTimeout(function() {
+        mostrarMensaje(mensaje);
+        // En una app real, aquí se mostraría una notificación push
+      }, tiempo);
+    }
+
+    // Guardar perfil
+    function guardarPerfil() {
+      const nombre = $('#nombre').val();
+      const apellidos = $('#apellidos').val();
+      const fechaNacimiento = $('#fechaNacimiento').val();
+      const correo = $('#correo').val();
+      const grupoSanguineo = $('#grupoSanguineo').val();
+      
+      localStorage.setItem('nombre', nombre);
+      localStorage.setItem('apellidos', apellidos);
+      localStorage.setItem('fechaNacimiento', fechaNacimiento);
+      localStorage.setItem('correo', correo);
+      localStorage.setItem('grupoSanguineo', grupoSanguineo);
+      
+      mostrarMensaje('Perfil guardado');
+      
+      // Actualizar nombre en la cabecera
+      $('#headerNombre').text(nombre);
+      $('#saludoUsuaria').html(`<p>Hola, <strong>${nombre}</strong>. ¿Cómo estás hoy?</p>`);
+    }
+
+    // Guardar información médica
+    function guardarInfoMedica() {
+      const alergias = $('#alergias').val();
+      const condicionesMedicas = $('#condicionesMedicas').val();
+      const medicamentosHabituales = $('#medicamentosHabituales').val();
+      const contactoEmergenciaNombre = $('#contactoEmergenciaNombre').val();
+      const contactoEmergenciaTelefono = $('#contactoEmergenciaTelefono').val();
+      
+      localStorage.setItem('alergias', alergias);
+      localStorage.setItem('condicionesMedicas', condicionesMedicas);
+      localStorage.setItem('medicamentosHabituales', medicamentosHabituales);
+      localStorage.setItem('contactoEmergenciaNombre', contactoEmergenciaNombre);
+      localStorage.setItem('contactoEmergenciaTelefono', contactoEmergenciaTelefono);
+      
+      mostrarMensaje('Información médica guardada');
+    }
+
+    // Guardar configuración
+    function guardarConfiguracion() {
+      const notificaciones = $('#configNotificaciones').is(':checked');
+      const modoOscuro = $('#configModoOscuro').is(':checked');
+      const recordatoriosCiclo = $('#configRecordatoriosCiclo').is(':checked');
+      const unidades = $('#configUnidades').val();
+      const idioma = $('#configIdioma').val();
+      
+      localStorage.setItem('configNotificaciones', notificaciones);
+      localStorage.setItem('configModoOscuro', modoOscuro);
+      localStorage.setItem('configRecordatoriosCiclo', recordatoriosCiclo);
+      localStorage.setItem('configUnidades', unidades);
+      localStorage.setItem('configIdioma', idioma);
+      
+      mostrarMensaje('Configuración guardada');
+      
+      // Aplicar modo oscuro
+      comprobarModoOscuro();
+    }
+    
+    function comprobarModoOscuro() {
+      const modoOscuro = localStorage.getItem('configModoOscuro') === 'true';
+      if (modoOscuro) {
+        $('body').addClass('dark-mode');
+      } else {
+        $('body').removeClass('dark-mode');
+      }
+    }
+
+    // Formatear fecha
+    function formatearFecha(fecha) {
+      const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(fecha).toLocaleDateString('es-ES', opciones);
+    }
+    
+    // Recordatorios
+    function cargarRecordatorios() {
+      let recordatorios = JSON.parse(localStorage.getItem('recordatorios') || '[]');
+      let html = '';
+      
+      if (recordatorios.length > 0) {
+        $('#recordatorios-container .no-data').hide();
+        
+        recordatorios.forEach((recordatorio, index) => {
+          html += `<div class="recordatorio">
+            <p>${recordatorio.texto}</p>
+            <div class="recordatorio-acciones">
+              <i class="fa fa-edit" data-index="${index}"></i>
+              <i class="fa fa-trash" data-index="${index}"></i>
+            </div>
+          </div>`;
+        });
+        
+        $('#recordatorios-container').html(html);
+        
+        // Eventos para editar y eliminar recordatorios
+        $('.recordatorio-acciones .fa-edit').click(function() {
+          const index = $(this).data('index');
+          const recordatorio = recordatorios[index];
+          
+          // Aquí deberías mostrar un formulario para editar el recordatorio
+          const nuevoTexto = prompt("Editar recordatorio", recordatorio.texto);
+          
+          if (nuevoTexto) {
+            recordatorios[index].texto = nuevoTexto;
+            localStorage.setItem('recordatorios', JSON.stringify(recordatorios));
+            cargarRecordatorios(); // Recargar la lista
+            mostrarMensaje('Recordatorio editado');
+          }
+        });
+        
+        $('.recordatorio-acciones .fa-trash').click(function() {
+          const index = $(this).data('index');
+          recordatorios.splice(index, 1);
+          localStorage.setItem('recordatorios', JSON.stringify(recordatorios));
+          cargarRecordatorios(); // Recargar la lista
+          mostrarMensaje('Recordatorio eliminado');
+          
+          if (recordatorios.length === 0) {
+            $('#recordatorios-container .no-data').show();
+            $('#recordatorios-container').html('');
+          }
+        });
+      } else {
+        $('#recordatorios-container .no-data').show();
+        $('#recordatorios-container').html('');
+      }
+    }
+    
+    $('#nuevoRecordatorio').click(function() {
+      const texto = prompt("Escribe tu recordatorio:");
+      if (texto) {
+        let recordatorios = JSON.parse(localStorage.getItem('recordatorios') || '[]');
+        recordatorios.push({ texto: texto });
+        localStorage.setItem('recordatorios', JSON.stringify(recordatorios));
+        cargarRecordatorios();
+        mostrarMensaje('Recordatorio agregado');
+      }
+    });
+    
+    // Foto de perfil
+    function configurarFotoPerfil() {
+      $('#cambiarFoto').click(function() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        
+        input.onchange = function(e) {
+          const file = e.target.files[0];
+          const reader = new FileReader();
+          
+          reader.onload = function(event) {
+            const imgUrl = event.target.result;
+            localStorage.setItem('avatarUrl', imgUrl);
+            $('#avatarContainer').html(`<img src="${imgUrl}" alt="Avatar">`);
+            mostrarMensaje('Foto de perfil actualizada');
+          }
+          
+          reader.readAsDataURL(file);
+        };
+        
+        input.click();
+      });
+      
+      $('#quitarFoto').click(function() {
+        localStorage.removeItem('avatarUrl');
+        $('#avatarContainer').html(`<i class="fa fa-user"></i>`);
+        mostrarMensaje('Foto de perfil eliminada');
+      });
+    }
+    
+    // Exportar datos (simulado)
+    function exportarDatos() {
+      const datos = localStorage;
+      let datosString = "";
+      for (let key in datos){
+        datosString += `${key}: ${datos[key]} \n`;
+      }
+
+      // Aquí deberías convertir los datos a un formato JSON o CSV
+      // y ofrecer la descarga del archivo
+      alert("Datos a exportar:\n\n" + datosString);
+      mostrarMensaje('Datos exportados (simulado)');
+    }
+
+    // Importar datos (simulado)
+    function importarDatos() {
+      const datosImportados = prompt("Pega aquí los datos a importar:");
+      if (datosImportados) {
+        try {
+          //Simulacion de importacion
+          const dataArray = datosImportados.split("\n");
+          dataArray.forEach(item =>{
+            const keyValue = item.split(":");
+            if (keyValue.length == 2){
+              const key = keyValue[0].trim();
+              const value = keyValue[1].trim();
+              localStorage.setItem(key, value);
+            }
+          })
+          cargarDatosUsuario();
+          actualizarResumen();
+          cargarRecordatorios();
+          mostrarMensaje('Datos importados (simulado)');
+        } catch (error) {
+          alert('Error al importar datos. Formato incorrecto.');
+        }
+      }
+    }
+
+    // Resetear datos
+    function resetDatos() {
+      if (confirm('¿Estás seguro de que quieres eliminar todos tus datos? Esta acción no se puede deshacer.')) {
+        localStorage.clear();
+        mostrarMensaje('Todos los datos han sido eliminados');
+        
+        // Recargar la página para limpiar la UI
+        location.reload();
+      }
+    }
+  </script> 
+ </body>
+</html>
