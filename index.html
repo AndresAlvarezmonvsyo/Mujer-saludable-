@@ -7,1080 +7,1194 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
   <style>
     /* Variables de color para el tema claro (original) */
-:root {
-  --color-primary: #e91e63;
-  --color-primary-light: #f48fb1;
-  --color-primary-dark: #c2185b;
-  --color-accent: #8e24aa;
-  --color-text: #333;
-  --color-text-light: #666;
-  --color-bg: #fefefe;
-  --color-bg-card: #fff;
-  --color-border: #eaeaea;
-}
-
-/* Estilos generales (aplican a ambos temas) */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Segoe UI', Roboto, sans-serif;
-  background: var(--color-bg);
-  color: var(--color-text);
-  padding-bottom: 70px; /* Espacio para la barra de navegación inferior */
-  line-height: 1.6;
-}
-
-header {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  color: white;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  position: relative;
-}
-
-h1 {
-  font-size: 24px;
-  margin-bottom: 5px;
-}
-
-.nombre-usuario {
-  font-size: 16px;
-  opacity: 0.9;
-}
-
-.seccion {
-  display: none;
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.seccion.activa {
-  display: block;
-  animation: fadeIn 0.4s ease-in;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-.card {
-  background: var(--color-bg-card);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--color-border);
-}
-
-.nav-inferior {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: white;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 999;
-  border-top: 1px solid var(--color-border);
-}
-
-.nav-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 20%;
-  height: 100%;
-  color: #aaa;
-  text-decoration: none;
-  font-size: 10px;
-  transition: 0.3s;
-}
-
-.nav-btn i {
-  font-size: 20px;
-  margin-bottom: 2px;
-  transition: 0.3s;
-}
-
-.nav-btn.activo {
-  color: var(--color-primary);
-}
-
-.nav-btn.activo i {
-  transform: scale(1.2);
-}
-
-h2 {
-  margin-bottom: 15px;
-  color: var(--color-primary);
-  font-size: 22px;
-}
-
-h3 {
-  margin-bottom: 10px;
-  color: var(--color-primary-dark);
-  font-size: 18px;
-}
-
-p {
-  margin-bottom: 15px;
-  color: var(--color-text-light);
-}
-
-.quote {
-  font-style: italic;
-  border-left: 3px solid var(--color-primary-light);
-  padding-left: 15px;
-}
-
-canvas {
-  width: 100%;
-  max-width: 100%;
-  height: 180px;
-  margin: 15px 0;
-  background: #fafafa;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-}
-
-button {
-  background: var(--color-primary);
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  margin-top: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s;
-  width: 100%;
-}
-
-button:hover {
-  background: var(--color-primary-dark);
-}
-
-button.outline {
-  background: transparent;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
-}
-
-button.outline:hover {
-  background: rgba(233, 30, 99, 0.1);
-}
-
-button.danger {
-  background: #f44336;
-}
-
-button.danger:hover {
-  background: #d32f2f;
-}
-
-.btn-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-
-input,
-textarea,
-select {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 14px;
-  transition: border 0.3s;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--color-primary);
-  outline: none;
-}
-
-label {
-  display: block;
-  margin-top: 12px;
-  font-weight: 500;
-  color: var(--color-text);
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-small {
-  display: block;
-  margin-top: 20px;
-  color: #888;
-  text-align: center;
-}
-
-.estado-animo {
-  display: flex;
-  justify-content: space-between;
-  margin: 15px 0;
-}
-
-.estado-btn {
-  background: #f0f0f0;
-  border: 2px solid transparent;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 20px;
-}
-
-.estado-btn.seleccionado {
-  border-color: var(--color-primary);
-  background: rgba(233, 30, 99, 0.1);
-}
-
-.progreso-container {
-  background: #f0f0f0;
-  border-radius: 8px;
-  height: 20px;
-  margin: 15px 0;
-  overflow: hidden;
-}
-
-.progreso-barra {
-  height: 100%;
-  background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary));
-  transition: width 0.3s;
-}
-
-.fases-ciclo {
-  display: flex;
-  margin: 15px 0;
-}
-
-.fase {
-  flex: 1;
-  text-align: center;
-  padding: 10px 0;
-  font-size: 12px;
-  position: relative;
-}
-
-.fase-1 {
-  background: #f8bbd0;
-}
-
-.fase-2 {
-  background: #e1bee7;
-}
-
-.fase-3 {
-  background: #bbdefb;
-}
-
-.fase-4 {
-  background: #c8e6c9;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 15px 0;
-}
-
-.stat-box {
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 15px;
-  text-align: center;
-}
-
-.stat-box h4 {
-  font-size: 12px;
-  color: var(--color-text-light);
-  margin-bottom: 5px;
-}
-
-.stat-box p {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--color-primary);
-  margin: 0;
-}
-
-.sintomas-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-  margin: 15px 0;
-}
-
-.sintoma-tag {
-  padding: 8px;
-  background: #f0f0f0;
-  border-radius: 6px;
-  font-size: 12px;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.sintoma-tag.activo {
-  background: var(--color-primary-light);
-  color: white;
-}
-
-.tabs {
-  display: flex;
-  margin-bottom: 15px;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.tab {
-  padding: 10px 15px;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-}
-
-.tab.activo {
-  border-bottom-color: var(--color-primary);
-  color: var(--color-primary);
-  font-weight: 500;
-}
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.activo {
-  display: block;
-}
-
-.recordatorio {
-  background: #f5f5f5;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  border-left: 3px solid var(--color-primary);
-  position: relative;
-}
-
-.recordatorio-acciones {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.recordatorio-acciones i {
-  cursor: pointer;
-  color: #888;
-  margin-left: 8px;
-}
-
-.avatar-container {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border: 3px solid white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.avatar i {
-  font-size: 50px;
-  color: #ccc;
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.foto-row {
-  display: flex;
-  gap: 10px;
-  margin: 10px 0;
-}
-
-.foto-btn {
-  flex: 1;
-  text-align: center;
-  padding: 10px;
-  background: #f0f0f0;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 24px;
-  margin-left: 10px;
-}
-
-.toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
-  border-radius: 24px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: .4s;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: var(--color-primary);
-}
-
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
-
-.config-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.loader {
-  display: none;
-  margin: 20px auto;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid var(--color-primary);
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.icon-text {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.icon-text i {
-  color: var(--color-primary);
-}
-
-.badge {
-  display: inline-block;
-  padding: 3px 8px;
-  background: var(--color-primary-light);
-  color: white;
-  border-radius: 12px;
-  font-size: 11px;
-  margin-left: 5px;
-}
-
-.no-data {
-  text-align: center;
-  padding: 30px 0;
-  color: #888;
-}
-
-.no-data i {
-  font-size: 40px;
-  margin-bottom: 10px;
-  opacity: 0.4;
-}
-
-.mensaje-flotante {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
-  z-index: 1000;
-  display: none;
-}
-
-/* Estilos para el modo oscuro */
-body.dark-mode {
-  --color-text: #eee;
-  --color-text-light: #ccc;
-  --color-bg: #121212;
-  --color-bg-card: #1e1e1e;
-  --color-border: #333;
-}
-
-body.dark-mode .card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .nav-inferior {
-  background: #1e1e1e;
-  border-top: 1px solid var(--color-border);
-}
-
-body.dark-mode .nav-btn {
-  color: #aaa;
-}
-
-body.dark-mode .nav-btn.activo {
-  color: var(--color-primary);
-}
-
-body.dark-mode input,
-body.dark-mode textarea,
-body.dark-mode select {
-  background-color: #2a2a2a;
-  border-color: #444;
-  color: #eee;
-}
-
-body.dark-mode input:focus,
-body.dark-mode textarea:focus,
-body.dark-mode select:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
-}
-
-body.dark-mode h2 {
-  color: var(--color-primary);
-}
-
-body.dark-mode h3 {
-  color: var(--color-primary-dark);
-}
-
-body.dark-mode .estado-btn {
-  background: #444;
-  color: #eee;
-}
-
-body.dark-mode .estado-btn.seleccionado {
-  border-color: var(--color-primary);
-  background: rgba(233, 30, 99, 0.1);
-  color: #eee;
-}
-
-body.dark-mode .progreso-container {
-  background-color: #444;
-}
-
-body.dark-mode .tab {
-  color: #aaa;
-}
-
-body.dark-mode .tab.activo {
-  color: var(--color-primary);
-}
-
-body.dark-mode .sintoma-tag {
-  background-color: #444;
-  color: #eee;
-}
-
-body.dark-mode .sintoma-tag.activo {
-  background-color: var(--color-primary-light);
-  color: #fff;
-}
-</style>
-
-
+    :root {
+      --color-primary: #e91e63;
+      --color-primary-light: #f48fb1;
+      --color-primary-dark: #c2185b;
+      --color-accent: #8e24aa;
+      --color-text: #333;
+      --color-text-light: #666;
+      --color-bg: #fefefe;
+      --color-bg-card: #fff;
+      --color-border: #eaeaea;
+    }
+
+    /* Estilos generales (aplican a ambos temas) */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      padding-bottom: 70px; /* Espacio para la barra de navegación inferior */
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      color: white;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
+
+    .nombre-usuario {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .seccion {
+      display: none;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .seccion.activa {
+      display: block;
+      animation: fadeIn 0.4s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .card {
+      background: var(--color-bg-card);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--color-border);
+      transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+    }
+
+    .nav-inferior {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: white;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 999;
+      border-top: 1px solid var(--color-border);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 20%;
+      height: 100%;
+      color: #aaa;
+      text-decoration: none;
+      font-size: 10px;
+      transition: 0.3s;
+    }
+
+    .nav-btn i {
+      font-size: 20px;
+      margin-bottom: 2px;
+      transition: 0.3s;
+    }
+
+    .nav-btn.activo {
+      color: var(--color-primary);
+    }
+
+    .nav-btn.activo i {
+      transform: scale(1.2);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: var(--color-primary);
+      font-size: 22px;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      color: var(--color-primary-dark);
+      font-size: 18px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      color: var(--color-text-light);
+    }
+
+    .quote {
+      font-style: italic;
+      border-left: 3px solid var(--color-primary-light);
+      padding-left: 15px;
+    }
+
+    canvas {
+      width: 100%;
+      max-width: 100%;
+      height: 180px;
+      margin: 15px 0;
+      background: #fafafa;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+    }
+
+    button {
+      background: var(--color-primary);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin-top: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    button:hover {
+      background: var(--color-primary-dark);
+    }
+
+    button.outline {
+      background: transparent;
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    button.outline:hover {
+      background: rgba(233, 30, 99, 0.1);
+    }
+
+    button.danger {
+      background: #f44336;
+    }
+
+    button.danger:hover {
+      background: #d32f2f;
+    }
+
+    .btn-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      transition: border 0.3s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--color-primary);
+      outline: none;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    small {
+      display: block;
+      margin-top: 20px;
+      color: #888;
+      text-align: center;
+    }
+
+    .estado-animo {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+    }
+
+    .estado-btn {
+      background: #f0f0f0;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 20px;
+    }
+
+    .estado-btn.seleccionado {
+      border-color: var(--color-primary);
+      background: rgba(233, 30, 99, 0.1);
+    }
+
+    .progreso-container {
+      background: #f0f0f0;
+      border-radius: 8px;
+      height: 20px;
+      margin: 15px 0;
+      overflow: hidden;
+    }
+
+    .progreso-barra {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary));
+      transition: width 0.3s;
+    }
+
+    .fases-ciclo {
+      display: flex;
+      margin: 15px 0;
+    }
+
+    .fase {
+      flex: 1;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 12px;
+      position: relative;
+    }
+
+    .fase-1 {
+      background: #f8bbd0;
+    }
+
+    .fase-2 {
+      background: #e1bee7;
+    }
+
+    .fase-3 {
+      background: #bbdefb;
+    }
+
+    .fase-4 {
+      background: #c8e6c9;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .stat-box {
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .stat-box h4 {
+      font-size: 12px;
+      color: var(--color-text-light);
+      margin-bottom: 5px;
+    }
+
+    .stat-box p {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--color-primary);
+      margin: 0;
+    }
+
+    .sintomas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .sintoma-tag {
+      padding: 8px;
+      background: #f0f0f0;
+      border-radius: 6px;
+      font-size: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .sintoma-tag.activo {
+      background: var(--color-primary-light);
+      color: white;
+    }
+
+    .tabs {
+      display: flex;
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .tab {
+      padding: 10px 15px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab.activo {
+      border-bottom-color: var(--color-primary);
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.activo {
+      display: block;
+    }
+
+    .recordatorio {
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border-left: 3px solid var(--color-primary);
+      position: relative;
+    }
+
+    .recordatorio-acciones {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .recordatorio-acciones i {
+      cursor: pointer;
+      color: #888;
+      margin-left: 8px;
+    }
+
+    .avatar-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 3px solid white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .avatar i {
+      font-size: 50px;
+      color: #ccc;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .foto-row {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .foto-btn {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      margin-left: 10px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--color-primary);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .config-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .loader {
+      display: none;
+      margin: 20px auto;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid var(--color-primary);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .icon-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .icon-text i {
+      color: var(--color-primary);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      background: var(--color-primary-light);
+      color: white;
+      border-radius: 12px;
+      font-size: 11px;
+      margin-left: 5px;
+    }
+
+    .no-data {
+      text-align: center;
+      padding: 30px 0;
+      color: #888;
+    }
+
+    .no-data i {
+      font-size: 40px;
+      margin-bottom: 10px;
+      opacity: 0.4;
+    }
+
+    .mensaje-flotante {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      z-index: 1000;
+      display: none;
+    }
+
+    /* Nuevos estilos para mejoras */
+    .clima-widget {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .clima-temp {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--color-primary);
+    }
+
+    .clima-estado {
+      font-size: 16px;
+      color: var(--color-text-light);
+    }
+
+    .clima-consejo {
+      font-size: 14px;
+      color: var(--color-primary-dark);
+      font-style: italic;
+      padding: 10px;
+      background-color: rgba(233, 30, 99, 0.1);
+      border-radius: 8px;
+    }
+
+    .consejo-salud {
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      margin: 15px 0;
+      border-left: 4px solid var(--color-primary);
+    }
+
+    .comunidad-card {
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      border: 1px solid var(--color-border);
+    }
+
+    .comunidad-card h4 {
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+
+    .emergencia-btn {
+      background: #f44336;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .recursos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .recurso-item {
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      border: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    .recurso-item i {
+      font-size: 24px;
+      color: var(--color-primary);
+      margin-bottom: 5px;
+    }
+
+    /* Estilos para el modo oscuro */
+    body.dark-mode {
+      --color-text: #eee;
+      --color-text-light: #ccc;
+      --color-bg: #121212;
+      --color-bg-card: #1e1e1e;
+      --color-border: #333;
+    }
+
+    body.dark-mode .card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .nav-inferior {
+      background: #1e1e1e;
+      border-top: 1px solid var(--color-border);
+    }
+
+    body.dark-mode .nav-btn {
+      color: #aaa;
+    }
+
+    body.dark-mode .nav-btn.activo {
+      color: var(--color-primary);
+    }
+
+    body.dark-mode input,
+    body.dark-mode textarea,
+    body.dark-mode select {
+      background-color: #2a2a2a;
+      border-color: #444;
+      color: #eee;
+    }
+
+    body.dark-mode input:focus,
+    body.dark-mode textarea:focus,
+    body.dark-mode select:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
+    }
+
+    body.dark-mode h2 {
+      color: var(--color-primary);
+    }
+
+    body.dark-mode h3 {
+      color: var(--color-primary-dark);
+    }
+
+    body.dark-mode .estado-btn {
+      background: #444;
+      color: #eee;
+    }
+
+    body.dark-mode .estado-btn.seleccionado {
+      border-color: var(--color-primary);
+      background: rgba(233, 30, 99, 0.1);
+      color: #eee;
+    }
+
+    body.dark-mode .progreso-container {
+      background-color: #444;
+    }
+
+    body.dark-mode .tab {
+      color: #aaa;
+    }
+
+    body.dark-mode .tab.activo {
+      color: var(--color-primary);
+    }
+
+    body.dark-mode .sintoma-tag {
+      background-color: #444;
+      color: #eee;
+    }
+
+    body.dark-mode .sintoma-tag.activo {
+      background-color: var(--color-primary-light);
+      color: #fff;
+    }
+
+    body.dark-mode .consejo-salud,
+    body.dark-mode .comunidad-card,
+    body.dark-mode .recurso-item {
+      background-color: #2a2a2a;
+      border-color: #444;
+    }
+
+    /* Modo creador */
+    body.modo-creador {
+      --color-primary: #4a148c;
+      --color-primary-light: #7b1fa2;
+      --color-primary-dark: #12005e;
+    }
+
+    body.modo-creador .nav-inferior {
+      background: linear-gradient(135deg, #4a148c, #7b1fa2);
+    }
+
+    body.modo-creador .nav-btn.activo {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    }
+
+    body.modo-creador.dark-mode {
+      --color-primary: #9c27b0;
+      --color-bg: #1a1a1a;
+      --color-bg-card: #2a2a2a;
+    }
+    .seccion {
+       overflow-y: auto;  /* Permite scroll vertical */
+       height: calc(100vh - 130px); /* Ajusta la altura restando el header y el nav */
+     }
+  </style> 
  </head> 
- <body>
-   
-  <header id="cabecera">
-    <h1><i class="fa fa-heartbeat"></i> Mujer Saludable</h1>
-    <div class="nombre-usuario" id="headerNombre"><i class="fa fa-user"></i> Bienvenida</div>
-  </header>
-
-  <div id="mensaje-flotante" class="mensaje-flotante"></div>
-
-  <div id="inicio" class="seccion activa">
-    <div class="card">
-      <h2><i class="fa fa-star"></i> Bienvenida</h2>
-      <div id="saludoUsuaria"></div>
-      <div class="quote">
-        <p id="fraseDelDia">"<i class="fa fa-quote-left"></i> Tu bienestar es tu mayor riqueza. <i class="fa fa-quote-right"></i>"</p>
-      </div>
+ <body> 
+  <header id="cabecera"> 
+   <h1><i class="fa fa-heartbeat"></i> Mujer Saludable</h1> 
+   <div class="nombre-usuario" id="headerNombre"> <i class="fa fa-user"></i> Bienvenida 
+   </div> 
+  </header> 
+  <div id="mensaje-flotante" class="mensaje-flotante"></div> 
+  <div id="inicio" class="seccion activa"> 
+   <div class="card"> 
+    <h2><i class="fa fa-star"></i> Bienvenida</h2> 
+    <div id="saludoUsuaria"></div> 
+    <div class="quote"> 
+     <p id="fraseDelDia">"<i class="fa fa-quote-left"></i> Tu bienestar es tu mayor riqueza. <i class="fa fa-quote-right"></i>"</p> 
+    </div> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-thermometer-half"></i> Estado de hoy</h3> 
+    <p>¿Cómo te sientes hoy?</p> 
+    <div class="estado-animo"> 
+     <div class="estado-btn" data-valor="1"> <i class="fa fa-frown"></i> 
+     </div> 
+     <div class="estado-btn" data-valor="2"> <i class="fa fa-meh"></i> 
+     </div> 
+     <div class="estado-btn" data-valor="3"> <i class="fa fa-smile"></i> 
+     </div> 
+     <div class="estado-btn" data-valor="4"> <i class="fa fa-laugh"></i> 
+     </div> 
+     <div class="estado-btn" data-valor="5"> <i class="fa fa-grin-beam"></i> 
+     </div> 
+    </div> <button id="guardarAnimo"><i class="fa fa-save"></i> Guardar estado</button> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-chart-pie"></i> Resumen</h3> 
+    <div class="stats-grid"> 
+     <div class="stat-box"> 
+      <h4><i class="fa fa-calendar-alt"></i> Ciclo</h4> 
+      <p id="resumeCiclo">-</p> 
+     </div> 
+     <div class="stat-box"> 
+      <h4><i class="fa fa-heart"></i> Estado</h4> 
+      <p id="resumeEstado">-</p> 
+     </div> 
+     <div class="stat-box"> 
+      <h4><i class="fa fa-weight-hanging"></i> Peso</h4> 
+      <p id="resumePeso">-</p> 
+     </div> 
+     <div class="stat-box"> 
+      <h4><i class="fa fa-calculator"></i> IMC</h4> 
+      <p id="resumeIMC">-</p> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-cloud-sun"></i> Clima y Salud</h3> 
+    <div id="widgetClima"> 
+     <div class="loader"></div> 
+    </div> 
+    <p class="clima-consejo" id="climaConsejo"></p> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-lightbulb"></i> Consejo del Día</h3> 
+    <div class="consejo-salud" id="consejoSalud"></div> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-bell"></i> Recordatorios</h3> 
+    <div id="recordatorios-container"> 
+     <div class="no-data"> <i class="fa fa-bell-slash"></i> 
+      <p>No tienes recordatorios</p> 
+     </div> 
+    </div> <button id="nuevoRecordatorio" class="outline"><i class="fa fa-plus"></i> Nuevo Recordatorio</button> 
+   </div> 
+  </div> 
+  <div id="ciclo" class="seccion"> 
+   <div class="card"> 
+    <h2><i class="fa fa-calendar-week"></i> Ciclo Menstrual</h2> 
+    <div class="form-group"> <label><i class="fa fa-calendar-day"></i> Fecha de inicio del último periodo:</label> 
+     <input type="date" id="fechaCiclo"> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-hourglass-half"></i> Duración promedio de tu ciclo (días):</label> 
+     <input type="number" id="duracionCiclo" min="21" max="40" value="28"> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-hourglass-start"></i> Duración promedio de tu periodo (días):</label> 
+     <input type="number" id="duracionPeriodo" min="1" max="10" value="5"> 
+    </div> <button onclick="guardarCiclo()"><i class="fa fa-save"></i> Guardar</button> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-line-chart"></i> Tu Ciclo</h3> 
+    <div class="fases-ciclo"> 
+     <div class="fase fase-1"> <i class="fa fa-tint"></i> Menstruación 
+     </div> 
+     <div class="fase fase-2"> <i class="fa fa-leaf"></i> Folicular 
+     </div> 
+     <div class="fase fase-3"> <i class="fa fa-egg"></i> Ovulación 
+     </div> 
+     <div class="fase fase-4"> <i class="fa fa-moon"></i> Lútea 
+     </div> 
+    </div> 
+    <canvas id="graficoCiclo"></canvas> 
+    <div id="proximosPeriodos"> <i class="fa fa-calendar-check"></i> 
+    </div> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-exclamation-triangle"></i> Síntomas</h3> 
+    <div class="sintomas-grid"> 
+     <div class="sintoma-tag" data-sintoma="dolor"> <i class="fa fa-medkit"></i> Dolor 
+     </div> 
+     <div class="sintoma-tag" data-sintoma="inflamacion"> <i class="fa fa-burn"></i> Inflamación 
+     </div> 
+     <div class="sintoma-tag" data-sintoma="cansancio"> <i class="fa fa-bed"></i> Cansancio 
+     </div> 
+     <div class="sintoma-tag" data-sintoma="antojos"> <i class="fa fa-utensils"></i> Antojos 
+     </div> 
+     <div class="sintoma-tag" data-sintoma="acne"> <i class="fa fa-circle"></i> Acné 
+     </div> 
+     <div class="sintoma-tag" data-sintoma="dolorcabeza"> <i class="fa fa-head-side-cough"></i> Dolor cabeza 
+     </div> 
+     <div class="sintoma-tag" data-sintoma="mareos"> <i class="fa fa-dizzy"></i> Mareos 
+     </div> 
+     <div class="sintoma-tag" data-sintoma="cambiosanimo"> <i class="fa fa-face-grin-beam-sweat"></i> Cambios ánimo 
+     </div> 
+     <div class="sintoma-tag" data-sintoma="otro"> <i class="fa fa-plus-circle"></i> Otro 
+     </div> 
+    </div> <textarea id="notasCiclo" rows="3" placeholder="Describe tus síntomas o notas"></textarea> <button onclick="guardarSintomasCiclo()"><i class="fa fa-save"></i> Guardar síntomas</button> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-calculator"></i> Calculadora de Fertilidad</h3> 
+    <div class="form-group"> <label><i class="fa fa-calendar-day"></i> Primer día del último periodo:</label> 
+     <input type="date" id="fertilidadFecha"> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-hourglass-half"></i> Duración promedio de tu ciclo:</label> 
+     <input type="number" id="fertilidadDuracion" min="21" max="40" value="28"> 
+    </div> <button onclick="calcularFertilidad()"><i class="fa fa-calculator"></i> Calcular días fértiles</button> 
+    <div id="resultadoFertilidad" style="margin-top: 15px;"></div> 
+   </div> 
+  </div> 
+  <div id="embarazo" class="seccion"> 
+   <div class="card"> 
+    <h2><i class="fa fa-baby"></i> Embarazo</h2> 
+    <div class="form-group"> <label><i class="fa fa-calendar-alt"></i> Fecha de última menstruación:</label> 
+     <input type="date" id="fechaUltimoPeriodo"> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-calendar-plus"></i> Fecha probable de parto (opcional):</label> 
+     <input type="date" id="fechaProbableParto"> 
+    </div> <button onclick="calcularEmbarazo()"><i class="fa fa-calculator"></i> Calcular</button> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-tasks"></i> Tu progreso</h3> 
+    <div id="infoEmbarazo"></div> 
+    <div class="progreso-container"> 
+     <div class="progreso-barra" id="progresoEmbarazo"></div> 
+    </div> 
+    <canvas id="graficoEmbarazo"></canvas> 
+   </div> 
+  <div class="card">
+  <h3><i class="fa fa-notes-medical"></i> Seguimiento</h3>
+  <div class="tabs">
+    <div class="tab activo" data-tab="peso">
+      <i class="fa fa-weight"></i> Peso
     </div>
-
-    <div class="card">
-      <h3><i class="fa fa-thermometer-half"></i> Estado de hoy</h3>
-      <p>¿Cómo te sientes hoy?</p>
-      <div class="estado-animo">
-        <div class="estado-btn" data-valor="1"><i class="fa fa-frown"></i></div>
-        <div class="estado-btn" data-valor="2"><i class="fa fa-meh"></i></div>
-        <div class="estado-btn" data-valor="3"><i class="fa fa-smile"></i></div>
-        <div class="estado-btn" data-valor="4"><i class="fa fa-laugh"></i></div>
-        <div class="estado-btn" data-valor="5"><i class="fa fa-grin-beam"></i></div>
-      </div>
-      <button id="guardarAnimo"><i class="fa fa-save"></i> Guardar estado</button>
+    <div class="tab" data-tab="movimientos">
+      <i class="fa fa-heartbeat"></i> Movimientos
     </div>
-
-    <div class="card">
-      <h3><i class="fa fa-chart-pie"></i> Resumen</h3>
-      <div class="stats-grid">
-        <div class="stat-box">
-          <h4><i class="fa fa-calendar-alt"></i> Ciclo</h4>
-          <p id="resumeCiclo">-</p>
-        </div>
-        <div class="stat-box">
-          <h4><i class="fa fa-heart"></i> Estado</h4>
-          <p id="resumeEstado">-</p>
-        </div>
-        <div class="stat-box">
-          <h4><i class="fa fa-weight-hanging"></i> Peso</h4>
-          <p id="resumePeso">-</p>
-        </div>
-        <div class="stat-box">
-          <h4><i class="fa fa-calculator"></i> IMC</h4>
-          <p id="resumeIMC">-</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3><i class="fa fa-bell"></i> Recordatorios</h3>
-      <div id="recordatorios-container">
-        <div class="no-data">
-          <i class="fa fa-bell-slash"></i>
-          <p>No tienes recordatorios</p>
-        </div>
-      </div>
-      <button id="nuevoRecordatorio" class="outline"><i class="fa fa-plus"></i> Nuevo Recordatorio</button>
-    </div>
-  </div>
-
-  <div id="ciclo" class="seccion">
-    <div class="card">
-      <h2><i class="fa fa-calendar-week"></i> Ciclo Menstrual</h2>
-      <div class="form-group">
-        <label><i class="fa fa-calendar-day"></i> Fecha de inicio del último periodo:</label>
-        <input type="date" id="fechaCiclo" />
-      </div>
-      <div class="form-group">
-        <label><i class="fa fa-hourglass-half"></i> Duración promedio de tu ciclo (días):</label>
-        <input type="number" id="duracionCiclo" min="21" max="40" value="28" />
-      </div>
-      <div class="form-group">
-        <label><i class="fa fa-hourglass-start"></i> Duración promedio de tu periodo (días):</label>
-        <input type="number" id="duracionPeriodo" min="1" max="10" value="5" />
-      </div>
-      <button onclick="guardarCiclo()"><i class="fa fa-save"></i> Guardar</button>
-    </div>
-
-    <div class="card">
-      <h3><i class="fa fa-line-chart"></i> Tu Ciclo</h3>
-      <div class="fases-ciclo">
-        <div class="fase fase-1"><i class="fa fa-tint"></i> Menstruación</div>
-        <div class="fase fase-2"><i class="fa fa-leaf"></i> Folicular</div>
-        <div class="fase fase-3"><i class="fa fa-egg"></i> Ovulación</div>
-        <div class="fase fase-4"><i class="fa fa-moon"></i> Lútea</div>
-      </div>
-      <canvas id="graficoCiclo"></canvas>
-      <div id="proximosPeriodos"><i class="fa fa-calendar-check"></i></div>
-    </div>
-
-    <div class="card">
-      <h3><i class="fa fa-exclamation-triangle"></i> Síntomas</h3>
-      <div class="sintomas-grid">
-        <div class="sintoma-tag" data-sintoma="dolor"><i class="fa fa-medkit"></i> Dolor</div>
-        <div class="sintoma-tag" data-sintoma="inflamacion"><i class="fa fa-burn"></i> Inflamación</div>
-        <div class="sintoma-tag" data-sintoma="cansancio"><i class="fa fa-bed"></i> Cansancio</div>
-        <div class="sintoma-tag" data-sintoma="antojos"><i class="fa fa-utensils"></i> Antojos</div>
-        <div class="sintoma-tag" data-sintoma="acne"><i class="fa fa-circle"></i> Acné</div>
-        <div class="sintoma-tag" data-sintoma="dolorcabeza"><i class="fa fa-head-side-cough"></i> Dolor cabeza</div>
-        <div class="sintoma-tag" data-sintoma="mareos"><i class="fa fa-dizzy"></i> Mareos</div>
-        <div class="sintoma-tag" data-sintoma="cambiosanimo"><i class="fa fa-face-grin-beam-sweat"></i> Cambios ánimo</div>
-        <div class="sintoma-tag" data-sintoma="otro"><i class="fa fa-plus-circle"></i> Otro</div>
-      </div>
-      <textarea id="notasCiclo" rows="3" placeholder="Describe tus síntomas o notas"></textarea>
-      <button onclick="guardarSintomasCiclo()"><i class="fa fa-save"></i> Guardar síntomas</button>
-    </div>
-  </div>
-
-  <div id="embarazo" class="seccion">
-    <div class="card">
-      <h2><i class="fa fa-baby"></i> Embarazo</h2>
-      <div class="form-group">
-        <label><i class="fa fa-calendar-alt"></i> Fecha de última menstruación:</label>
-        <input type="date" id="fechaUltimoPeriodo" />
-      </div>
-      <div class="form-group">
-        <label><i class="fa fa-calendar-plus"></i> Fecha probable de parto (opcional):</label>
-        <input type="date" id="fechaProbableParto" />
-      </div>
-      <button onclick="calcularEmbarazo()"><i class="fa fa-calculator"></i> Calcular</button>
-    </div>
-
-    <div class="card">
-      <h3><i class="fa fa-tasks"></i> Tu progreso</h3>
-      <div id="infoEmbarazo"></div>
-      <div class="progreso-container">
-        <div class="progreso-barra" id="progresoEmbarazo"></div>
-      </div>
-      <canvas id="graficoEmbarazo"></canvas>
-    </div>
-
-    <div class="card">
-      <h3><i class="fa fa-notes-medical"></i> Seguimiento</h3>
-      
-      <div class="tabs">
-        <div class="tab activo" data-tab="peso"><i class="fa fa-weight"></i> Peso</div>
-        <div class="tab" data-tab="movimientos"><i class="fa fa-hand-wave"></i> Movimientos</div>
-        <div class="tab" data-tab="contracciones"><i class="fa fa-heartbeat"></i> Contracciones</div>
-      </div>
-      
-      <div class="tab-content activo" id="tab-peso">
-        <div class="form-group">
-          <label><i class="fa fa-weight-scale"></i> Peso actual (kg):</label>
-          <input type="number" step="0.1" id="pesoEmbarazo" />
-        </div>
-        <div class="form-group">
-          <label><i class="fa fa-calendar-alt"></i> Fecha:</label>
-          <input type="date" id="fechaPesoEmbarazo" />
-        </div>
-        <button onclick="guardarPesoEmbarazo()"><i class="fa fa-save"></i> Guardar peso</button>
-      </div>
-      
-      <div class="tab-content" id="tab-movimientos">
-        <div class="form-group">
-          <label><i class="fa fa-hand-point-up"></i> Intensidad de movimientos:</label>
-          <select id="intensidadMovimientos">
-            <option value="suave">Suaves</option>
-            <option value="moderado">Moderados</option>
-            <option value="fuerte">Fuertes</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label><i class="fa fa-stopwatch"></i> Duración (minutos):</label>
-          <input type="number" id="duracionMovimientos" min="1" max="60" />
-        </div>
-        <button onclick="guardarMovimientos()"><i class="fa fa-save"></i> Guardar movimientos</button>
-      </div>
-      
-      <div class="tab-content" id="tab-contracciones">
-        <div class="form-group">
-          <label><i class="fa fa-hourglass-half"></i> Duración (segundos):</label>
-          <input type="number" id="duracionContracciones" min="1" max="120" />
-        </div>
-        <div class="form-group">
-          <label><i class="fa fa-clock"></i> Frecuencia (minutos entre contracciones):</label>
-          <input type="number" id="frecuenciaContracciones" min="1" max="60" />
-        </div>
-        <button onclick="guardarContracciones()"><i class="fa fa-save"></i> Guardar contracciones</button>
-      </div>
+    <div class="tab" data-tab="contracciones">
+      <i class="fa fa-heartbeat"></i> Contracciones
     </div>
   </div>
 
-  <div id="salud" class="seccion">
-    <div class="card">
-      <h2><i class="fa fa-heartbeat"></i> Mi Salud</h2>
-      
-      <div class="tabs">
-        <div class="tab activo" data-tab="metricas"><i class="fa fa-tachometer-alt"></i> Métricas</div>
-        <div class="tab" data-tab="diario"><i class="fa fa-book-medical"></i> Diario</div>
-        <div class="tab" data-tab="medicamentos"><i class="fa fa-pills"></i> Medicamentos</div>
-      </div>
-      
-      <div class="tab-content activo" id="tab-metricas">
-        <div class="form-group">
-          <label><i class="fa fa-weight"></i> Peso (kg):</label>
-          <input type="number" step="0.1" id="peso" />
-        </div>
-        <div class="form-group">
-          <label><i class="fa fa-ruler-vertical"></i> Altura (cm):</label>
-          <input type="number" id="altura" />
-        </div>
-        <div class="form-group">
-          <label><i class="fa fa-heartbeat"></i> Presión arterial (sistólica/diastólica):</label>
-          <div style="display: flex; gap: 10px;">
-            <input type="number" id="presionSistolica" placeholder="120" />
-            <input type="number" id="presionDiastolica" placeholder="80" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label><i class="fa fa-pulse"></i> Ritmo cardíaco (ppm):</label>
-          <input type="number" id="ritmoCardiaco" />
-        </div>
-        <button onclick="guardarMetricas()"><i class="fa fa-save"></i> Guardar métricas</button>
-      </div>
-      
-      <div class="tab-content" id="tab-diario">
-        <div class="form-group">
-          <label><i class="fa fa-comment-dots"></i> ¿Cómo te sientes hoy?</label>
-          <textarea id="notasSalud" rows="4" placeholder="Dolor, estado de ánimo, síntomas, etc."></textarea>
-        </div>
-        <div class="form-group">
-          <label><i class="fa fa-calendar-alt"></i> Fecha:</label>
-          <input type="date" id="fechaNotas" />
-        </div>
-        <button onclick="guardarSalud()"><i class="fa fa-save"></i> Guardar en diario</button>
-      </div>
-      
-      <div class="tab-content" id="tab-medicamentos">
-        <div class="form-group">
-          <label><i class="fa fa-capsules"></i> Nombre del medicamento:</label>
-          <input type="text" id="nombreMedicamento" placeholder="Paracetamol, Ibuprofeno, etc." />
-        </div>
-        <div class="form-group">
-          <label><i class="fa fa-prescription-bottle"></i> Dosis:</label>
-          <input type="text" id="dosisMedicamento" placeholder="500mg, 1 pastilla, etc." />
-        </div>
-        <div class="form-group">
-          <label><i class="fa fa-clock"></i> Frecuencia:</label>
-          <select id="frecuenciaMedicamento">
-            <option value="1">Una vez al día</option>
-            <option value="2">Dos veces al día</option>
-            <option value="3">Tres veces al día</option>
-            <option value="4">Cuatro veces al día</option>
-            <option value="segun">Según necesidad</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label><i class="fa fa-bell"></i> Recordatorio:</label>
-          <div class="config-item">
-            <span>Activar recordatorio</span>
-            <label class="toggle-switch">
-              <input type="checkbox" id="recordatorioMedicamento">
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-        <button onclick="guardarMedicamento()"><i class="fa fa-save"></i> Guardar medicamento</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3><i class="fa fa-history"></i> Historial</h3>
-      <canvas id="graficoSalud"></canvas>
-      <div id="historySalud" class="no-data">
-        <i class="fa fa-notes-medical"></i>
-        <p>No hay datos de salud registrados</p>
-      </div>
-    </div>
-  </div>
-
-  <div id="perfil" class="seccion">
-    <div class="card">
-      <div class="avatar-container">
-        <div class="avatar" id="avatarContainer">
-          <i class="fa fa-user"></i>
-        </div>
-      </div>
-      <div class="foto-row">
-        <div class="foto-btn" id="cambiarFoto">
-          <i class="fa fa-camera"></i>
-          <div>Cambiar</div>
-        </div>
-        <div class="foto-btn" id="quitarFoto">
-          <i class="fa fa-trash"></i>
-          <div>Quitar</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2><i class="fa fa-id-card"></i> Datos Personales</h2>
-      <div class="form-group">
-        <label><i class="fa fa-signature"></i> Nombre:</label>
-        <input type="text" id="nombre" placeholder="Tu nombre" />
-      </div>
-      <div class="form-group">
-        <label><i class="fa fa-user-tag"></i> Apellidos:</label>
-        <input type="text" id="apellidos" placeholder="Tus apellidos" />
-      </div>
-      <div class="form-group">
-        <label><i class="fa fa-birthday-cake"></i> Fecha de nacimiento:</label>
-        <input type="date" id="fechaNacimiento" />
-      </div>
-      <div class="form-group">
-        <label><i class="fa fa-envelope"></i> Correo electrónico:</label>
-        <input type="email" id="correo" placeholder="correo@ejemplo.com" />
-      </div>
-      <div class="form-group">
-        <label><i class="fa fa-tint"></i> Grupo sanguíneo:</label>
-        <select id="grupoSanguineo">
-          <option value="">Seleccionar</option>
-          <option value="A+">A+</option>
-          <option value="A-">A-</option>
-          <option value="B+">B+</option>
-          <option value="B-">B-</option>
-          <option value="AB+">AB+</option>
-          <option value="AB-">AB-</option>
-          <option value="O+">O+</option>
-          <option value="O-">O-</option>
-        </select>
-      </div>
-      <button onclick="guardarPerfil()"><i class="fa fa-save"></i> Guardar perfil</button>
-    </div>
-
-    <div class="card">
-      <h2><i class="fa fa-file-medical-alt"></i> Información Médica</h2>
-      <div class="form-group">
-        <label><i class="fa fa-allergies"></i> Alergias:</label>
-        <textarea id="alergias" rows="2" placeholder="Medicamentos, alimentos, etc."></textarea>
-      </div>
-      <div class="form-group">
-        <label><i class="fa fa-heartbeat"></i> Condiciones médicas:</label>
-        <textarea id="condicionesMedicas" rows="2" placeholder="Diabetes, hipertensión, etc."></textarea>
-      </div>
-      <div class="form-group">
-        <label><i class="fa fa-prescription-bottle"></i> Medicamentos habituales:</label>
-        <textarea id="medicamentosHabituales" rows="2" placeholder="Incluyendo vitaminas y suplementos"></textarea>
-      </div>
-      <div class="form-group">
-        <label><i class="fa fa-user-friends"></i> Contacto de emergencia:</label>
-        <input type="text" id="contactoEmergenciaNombre" placeholder="Nombre" />
-        <input type="tel" id="contactoEmergenciaTelefono" placeholder="Teléfono" />
-      </div>
-      <button onclick="guardarInfoMedica()"><i class="fa fa-save"></i> Guardar información médica</button>
-    </div>
-
-    <div class="card">
-      <h2><i class="fa fa-cogs"></i> Configuración</h2>
-      <div class="form-group">
-        <div class="config-item">
-          <span><i class="fa fa-bell"></i> Notificaciones</span>
-          <label class="toggle-switch">
-            <input type="checkbox" id="configNotificaciones" checked>
-            <span class="slider"></span>
-          </label>
-        </div>
-        <div class="config-item">
-          <span><i class="fa fa-moon"></i> Modo oscuro</span>
-          <label class="toggle-switch">
-            <input type="checkbox" id="configModoOscuro">
-            <span class="slider"></span>
-          </label>
-        </div>
-        <div class="config-item">
-          <span><i class="fa fa-calendar-check"></i> Recordatorios de ciclo</span>
-          <label class="toggle-switch">
-            <input type="checkbox" id="configRecordatoriosCiclo" checked>
-            <span class="slider"></span>
-          </label>
-        </div>
-        <div class="config-item">
-          <span><i class="fa fa-ruler-combined"></i> Unidades de medida</span>
-          <select id="configUnidades">
-            <option value="metrico">Métrico (kg, cm)</option>
-            <option value="imperial">Imperial (lb, in)</option>
-          </select>
-        </div>
-        <div class="config-item">
-          <span><i class="fa fa-globe"></i> Idioma</span>
-          <select id="configIdioma">
-            <option value="es">Español</option>
-            <option value="en">English</option>
-            <option value="fr">Français</option>
-          </select>
-        </div>
-      </div>
-      <button onclick="guardarConfiguracion()"><i class="fa fa-save"></i> Guardar configuración</button>
-    </div>
-
-    <div class="card">
-      <h2><i class="fa fa-database"></i> Gestión de datos</h2>
-      <p>Puedes exportar tus datos o eliminar toda la información guardada en la aplicación.</p>
-      <div class="btn-group">
-        <button onclick="exportarDatos()" class="outline"><i class="fa fa-download"></i> Exportar datos</button>
-        <button onclick="importarDatos()" class="outline"><i class="fa fa-upload"></i> Importar datos</button>
-      </div>
-      <button onclick="resetDatos()" class="danger"><i class="fa fa-trash-alt"></i> Eliminar todos los datos</button>
-      <small>App versión 1.0.0 - Powered By Andres Alvarez </small>
-    </div>
-  </div>
-
-  <div class="nav-inferior">
-    <a class="nav-btn activo" data-target="inicio">
-      <i class="fa fa-home"></i>
-      <span>Inicio</span>
-    </a>
-    <a class="nav-btn" data-target="ciclo">
-      <i class="fa fa-calendar"></i>
-      <span>Ciclo</span>
-    </a>
-    <a class="nav-btn" data-target="embarazo">
-      <i class="fa fa-heartbeat"></i>
-      <span>Embarazo</span>
-    </a>
-    <a class="nav-btn" data-target="salud">
-      <i class="fa fa-plus-square"></i>
-      <span>Salud</span>
-    </a>
-    <a class="nav-btn" data-target="perfil">
-      <i class="fa fa-user"></i>
-      <span>Perfil</span>
-    </a>
-  </div>
-
-
+   <div class="tab-content activo" id="tab-peso"> 
+     <div class="form-group"> <label><i class="fa fa-weight-scale"></i> Peso actual (kg):</label> 
+      <input type="number" step="0.1" id="pesoEmbarazo"> 
+     </div> 
+     <div class="form-group"> <label><i class="fa fa-calendar-alt"></i> Fecha:</label> 
+      <input type="date" id="fechaPesoEmbarazo"> 
+     </div> <button onclick="guardarPesoEmbarazo()"><i class="fa fa-save"></i> Guardar peso</button> 
+    </div> 
+    <div class="tab-content" id="tab-movimientos"> 
+     <div class="form-group"> <label><i class="fa fa-hand-point-up"></i> Intensidad de movimientos:</label> <select id="intensidadMovimientos"> <option value="suave">Suaves</option> <option value="moderado">Moderados</option> <option value="fuerte">Fuertes</option> </select> 
+     </div> 
+     <div class="form-group"> <label><i class="fa fa-stopwatch"></i> Duración (minutos):</label> 
+      <input type="number" id="duracionMovimientos" min="1" max="60"> 
+     </div> <button onclick="guardarMovimientos()"><i class="fa fa-save"></i> Guardar movimientos</button> 
+    </div> 
+    <div class="tab-content" id="tab-contracciones"> 
+     <div class="form-group"> <label><i class="fa fa-hourglass-half"></i> Duración (segundos):</label> 
+      <input type="number" id="duracionContracciones" min="1" max="120"> 
+     </div> 
+     <div class="form-group"> <label><i class="fa fa-clock"></i> Frecuencia (minutos entre contracciones):</label> 
+      <input type="number" id="frecuenciaContracciones" min="1" max="60"> 
+     </div> <button onclick="guardarContracciones()"><i class="fa fa-save"></i> Guardar contracciones</button> 
+    </div> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-baby-carriage"></i> Preparación para el Parto</h3> 
+    <div class="form-group"> <label><i class="fa fa-hospital"></i> Hospital seleccionado:</label> 
+     <input type="text" id="hospitalParto" placeholder="Nombre del hospital"> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-user-md"></i> Médico/ginecólogo:</label> 
+     <input type="text" id="medicoParto" placeholder="Nombre del médico"> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-phone"></i> Teléfono de emergencia:</label> 
+     <input type="tel" id="telefonoEmergencia" placeholder="Número de contacto"> 
+    </div> <button onclick="guardarPreparacionParto()"><i class="fa fa-save"></i> Guardar información</button> 
+   </div> 
+  </div> 
+  <div id="salud" class="seccion"> 
+   <div class="card"> 
+    <h2><i class="fa fa-heartbeat"></i> Mi Salud</h2> 
+    <div class="tabs"> 
+     <div class="tab activo" data-tab="metricas"> <i class="fa fa-tachometer-alt"></i> Métricas 
+     </div> 
+     <div class="tab" data-tab="diario"> <i class="fa fa-book-medical"></i> Diario 
+     </div> 
+     <div class="tab" data-tab="medicamentos"> <i class="fa fa-pills"></i> Medicamentos 
+     </div> 
+    </div> 
+    <div class="tab-content activo" id="tab-metricas"> 
+     <div class="form-group"> <label><i class="fa fa-weight"></i> Peso (kg):</label> 
+      <input type="number" step="0.1" id="peso"> 
+     </div> 
+     <div class="form-group"> <label><i class="fa fa-ruler-vertical"></i> Altura (cm):</label> 
+      <input type="number" id="altura"> 
+     </div> 
+     <div class="form-group"> <label><i class="fa fa-heartbeat"></i> Presión arterial (sistólica/diastólica):</label> 
+      <div style="display: flex; gap: 10px;"> 
+       <input type="number" id="presionSistolica" placeholder="120"> 
+       <input type="number" id="presionDiastolica" placeholder="80"> 
+      </div> 
+     </div> 
+     <div class="form-group"> <label><i class="fa fa-pulse"></i> Ritmo cardíaco (ppm):</label> 
+      <input type="number" id="ritmoCardiaco"> 
+     </div> <button onclick="guardarMetricas()"><i class="fa fa-save"></i> Guardar métricas</button> 
+    </div> 
+    <div class="tab-content" id="tab-diario"> 
+     <div class="form-group"> <label><i class="fa fa-comment-dots"></i> ¿Cómo te sientes hoy?</label> <textarea id="notasSalud" rows="4" placeholder="Dolor, estado de ánimo, síntomas, etc."></textarea> 
+     </div> 
+     <div class="form-group"> <label><i class="fa fa-calendar-alt"></i> Fecha:</label> 
+      <input type="date" id="fechaNotas"> 
+     </div> 
+     <div class="form-group"> <label><i class="fa fa-camera"></i> Adjuntar foto (opcional):</label> 
+      <input type="file" id="fotoDiario" accept="image/*"> 
+     </div> <button onclick="guardarSalud()"><i class="fa fa-save"></i> Guardar en diario</button> 
+    </div> 
+    <div class="tab-content" id="tab-medicamentos"> 
+     <div class="form-group"> <label><i class="fa fa-capsules"></i> Nombre del medicamento:</label> 
+      <input type="text" id="nombreMedicamento" placeholder="Paracetamol, Ibuprofeno, etc."> 
+     </div> 
+     <div class="form-group"> <label><i class="fa fa-prescription-bottle"></i> Dosis:</label> 
+      <input type="text" id="dosisMedicamento" placeholder="500mg, 1 pastilla, etc."> 
+     </div> 
+     <div class="form-group"> <label><i class="fa fa-clock"></i> Frecuencia:</label> <select id="frecuenciaMedicamento"> <option value="1">Una vez al día</option> <option value="2">Dos veces al día</option> <option value="3">Tres veces al día</option> <option value="4">Cuatro veces al día</option> <option value="segun">Según necesidad</option> </select> 
+     </div> 
+     <div class="form-group"> <label><i class="fa fa-bell"></i> Recordatorio:</label> 
+      <div class="config-item"> <span>Activar recordatorio</span> <label class="toggle-switch"> <input type="checkbox" id="recordatorioMedicamento"> <span class="slider"></span> </label> 
+      </div> 
+     </div> <button onclick="guardarMedicamento()"><i class="fa fa-save"></i> Guardar medicamento</button> 
+    </div> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-history"></i> Historial</h3> 
+    <canvas id="graficoSalud"></canvas> 
+    <div id="historySalud" class="no-data"> <i class="fa fa-notes-medical"></i> 
+     <p>No hay datos de salud registrados</p> 
+    </div> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-notes-medical"></i> Historial Médico</h3> 
+    <div class="form-group"> <label><i class="fa fa-calendar-alt"></i> Fecha del evento:</label> 
+     <input type="date" id="fechaEventoMedico"> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-file-medical"></i> Tipo de evento:</label> <select id="tipoEventoMedico"> <option value="consulta">Consulta médica</option> <option value="analisis">Análisis/Examen</option> <option value="vacuna">Vacuna</option> <option value="cirugia">Cirugía/Procedimiento</option> <option value="otro">Otro</option> </select> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-comment-medical"></i> Notas:</label> <textarea id="notasEventoMedico" rows="3" placeholder="Descripción del evento médico"></textarea> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-file-pdf"></i> Documento adjunto (opcional):</label> 
+     <input type="file" id="documentoEventoMedico" accept=".pdf,.jpg,.png"> 
+    </div> <button onclick="guardarEventoMedico()"><i class="fa fa-save"></i> Guardar evento</button> 
+   </div> 
+  </div> 
+  <div id="comunidad" class="seccion"> 
+   <div class="card"> 
+    <h2><i class="fa fa-users"></i> Comunidad</h2> 
+    <p>Conecta con otras mujeres y comparte experiencias.</p> 
+    <div class="comunidad-card"> 
+     <h4><i class="fa fa-comments"></i> Foro de Discusión</h4> 
+     <p>Participa en conversaciones sobre salud femenina.</p> <button class="outline" onclick="mostrarForo()"><i class="fa fa-sign-in-alt"></i> Entrar al foro</button> 
+    </div> 
+    <div class="comunidad-card"> 
+     <h4><i class="fa fa-user-md"></i> Pregunta a un Especialista</h4> 
+     <p>Haz preguntas anónimas a nuestro equipo médico.</p> <button class="outline" onclick="mostrarFormularioPregunta()"><i class="fa fa-question-circle"></i> Hacer pregunta</button> 
+    </div> 
+    <div class="comunidad-card"> 
+     <h4><i class="fa fa-book"></i> Historias Inspiradoras</h4> 
+     <p>Lee experiencias de otras mujeres y comparte la tuya.</p> <button class="outline" onclick="mostrarHistorias()"><i class="fa fa-book-open"></i> Ver historias</button> 
+    </div> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-calendar-check"></i> Eventos Próximos</h3> 
+    <div id="eventosComunidad"> 
+     <div class="no-data"> <i class="fa fa-calendar-times"></i> 
+      <p>No hay eventos programados</p> 
+     </div> 
+    </div> <button class="outline" onclick="sugerirEvento()"><i class="fa fa-plus"></i> Sugerir evento</button> 
+   </div> 
+  </div> 
+  <div id="recursos" class="seccion"> 
+   <div class="card"> 
+    <h2><i class="fa fa-book-open"></i> Recursos Educativos</h2> 
+    <p>Encuentra información confiable sobre salud femenina.</p> 
+    <div class="recursos-grid"> 
+     <div class="recurso-item"> <i class="fa fa-file-alt"></i> 
+      <h4>Artículos</h4> 
+      <p>Información basada en evidencia</p> 
+     </div> 
+     <div class="recurso-item"> <i class="fa fa-video"></i> 
+      <h4>Videos</h4> 
+      <p>Contenido educativo visual</p> 
+     </div> 
+     <div class="recurso-item"> <i class="fa fa-chart-pie"></i> 
+      <h4>Infografías</h4> 
+      <p>Datos en formato visual</p> 
+     </div> 
+     <div class="recurso-item"> <i class="fa fa-podcast"></i> 
+      <h4>Podcasts</h4> 
+      <p>Conversaciones sobre salud</p> 
+     </div> 
+    </div> <button class="outline" onclick="explorarRecursos()"><i class="fa fa-search"></i> Explorar todos los recursos</button> 
+   </div> 
+   <div class="card"> 
+    <h3><i class="fa fa-heartbeat"></i> Emergencias</h3> 
+    <p>En caso de emergencia, mantén la calma y actúa rápido.</p> 
+    <div class="emergencia-btn" onclick="llamarEmergencia()"> <i class="fa fa-phone-alt"></i> <span>LLAMAR A EMERGENCIA</span> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-user-md"></i> Contacto de emergencia:</label> 
+     <input type="text" id="contactoEmergencia1" placeholder="Nombre" value="911" disabled> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-phone"></i> Teléfono alternativo:</label> 
+     <input type="tel" id="contactoEmergencia2" placeholder="Número de contacto"> 
+    </div> <button onclick="guardarContactosEmergencia()"><i class="fa fa-save"></i> Guardar contactos</button> 
+   </div> 
+  </div> 
+  <div id="perfil" class="seccion"> 
+   <div class="card"> 
+    <div class="avatar-container"> 
+     <div class="avatar" id="avatarContainer"> <i class="fa fa-user"></i> 
+     </div> 
+    </div> 
+    <div class="foto-row"> 
+     <div class="foto-btn" id="cambiarFoto"> <i class="fa fa-camera"></i> 
+      <div>
+        Cambiar 
+      </div> 
+     </div> 
+     <div class="foto-btn" id="quitarFoto"> <i class="fa fa-trash"></i> 
+      <div>
+        Quitar 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="card"> 
+    <h2><i class="fa fa-id-card"></i> Datos Personales</h2> 
+    <div class="form-group"> <label><i class="fa fa-signature"></i> Nombre:</label> 
+     <input type="text" id="nombre" placeholder="Tu nombre"> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-user-tag"></i> Apellidos:</label> 
+     <input type="text" id="apellidos" placeholder="Tus apellidos"> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-birthday-cake"></i> Fecha de nacimiento:</label> 
+     <input type="date" id="fechaNacimiento"> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-envelope"></i> Correo electrónico:</label> 
+     <input type="email" id="correo" placeholder="correo@ejemplo.com"> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-tint"></i> Grupo sanguíneo:</label> <select id="grupoSanguineo"> <option value="">Seleccionar</option> <option value="A+">A+</option> <option value="A-">A-</option> <option value="B+">B+</option> <option value="B-">B-</option> <option value="AB+">AB+</option> <option value="AB-">AB-</option> <option value="O+">O+</option> <option value="O-">O-</option> </select> 
+    </div> <button onclick="guardarPerfil()"><i class="fa fa-save"></i> Guardar perfil</button> 
+   </div> 
+   <div class="card"> 
+    <h2><i class="fa fa-file-medical-alt"></i> Información Médica</h2> 
+    <div class="form-group"> <label><i class="fa fa-allergies"></i> Alergias:</label> <textarea id="alergias" rows="2" placeholder="Medicamentos, alimentos, etc."></textarea> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-heartbeat"></i> Condiciones médicas:</label> <textarea id="condicionesMedicas" rows="2" placeholder="Diabetes, hipertensión, etc."></textarea> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-prescription-bottle"></i> Medicamentos habituales:</label> <textarea id="medicamentosHabituales" rows="2" placeholder="Incluyendo vitaminas y suplementos"></textarea> 
+    </div> 
+    <div class="form-group"> <label><i class="fa fa-user-friends"></i> Contacto de emergencia:</label> 
+     <input type="text" id="contactoEmergenciaNombre" placeholder="Nombre"> 
+     <input type="tel" id="contactoEmergenciaTelefono" placeholder="Teléfono"> 
+    </div> <button onclick="guardarInfoMedica()"><i class="fa fa-save"></i> Guardar información médica</button> 
+   </div> 
+   <div class="card"> 
+    <h2><i class="fa fa-code"></i> Acerca de esta App</h2> 
+    <div class="avatar-container"> 
+     <div class="avatar"> <i class="fa fa-user-tie"></i> 
+     </div> 
+    </div> 
+    <h3>Desarrollado por Andres Alvarez</h3> 
+    <p>Esta aplicación fue creada con el objetivo de empoderar a las mujeres en el cuidado de su salud.</p> 
+    <div class="icon-text"> <i class="fab fa-github"></i> <span>Visita mi GitHub: <a href="https://github.com/AndresAlvarezmonvsyo?tab=repositories" target="_blank" id="githubLink"> github.com/AndresAlvarezmonvsyo </a> </span> 
+    </div> 
+    <div class="icon-text"> <i class="fa fa-envelope"></i> <span>Contacto: <a href="mailto:julianmoncayo69@gmail.com" id="emailLink"> julianmoncayo69@gmail.com </a> </span> 
+    </div> <button onclick="mostrarAgradecimientos()" class="outline"> <i class="fa fa-heart"></i> Agradecimientos </button> 
+   </div> 
+   <div class="card"> 
+    <h2><i class="fa fa-cogs"></i> Configuración</h2> 
+    <div class="form-group"> 
+     <div class="config-item"> <span><i class="fa fa-bell"></i> Notificaciones</span> <label class="toggle-switch"> <input type="checkbox" id="configNotificaciones" checked> <span class="slider"></span> </label> 
+     </div> 
+     <div class="config-item"> <span><i class="fa fa-moon"></i> Modo oscuro</span> <label class="toggle-switch"> <input type="checkbox" id="configModoOscuro"> <span class="slider"></span> </label> 
+     </div> 
+     <div class="config-item"> <span><i class="fa fa-calendar-check"></i> Recordatorios de ciclo</span> <label class="toggle-switch"> <input type="checkbox" id="configRecordatoriosCiclo" checked> <span class="slider"></span> </label> 
+     </div> 
+     <div class="config-item"> <span><i class="fa fa-ruler-combined"></i> Unidades de medida</span> <select id="configUnidades"> <option value="metrico">Métrico (kg, cm)</option> <option value="imperial">Imperial (lb, in)</option> </select> 
+     </div> 
+     <div class="config-item"> <span><i class="fa fa-globe"></i> Idioma</span> <select id="configIdioma"> <option value="es">Español</option> <option value="en">English</option> <option value="fr">Français</option> </select> 
+     </div> 
+    </div> <button onclick="guardarConfiguracion()"> <i class="fa fa-save"></i> Guardar configuración </button> 
+   </div> 
+   <div class="card"> 
+    <h2><i class="fa fa-database"></i> Gestión de datos</h2> 
+    <p>Puedes exportar tus datos o eliminar toda la información guardada en la aplicación.</p> 
+    <div class="btn-group"> <button onclick="exportarDatos()" class="outline"><i class="fa fa-download"></i> Exportar datos</button> <button onclick="importarDatos()" class="outline"><i class="fa fa-upload"></i> Importar datos</button> 
+    </div> <button onclick="resetDatos()" class="danger"><i class="fa fa-trash-alt"></i> Eliminar todos los datos</button> <small>App versión 2.3.7 - Powered By Andres Alvarez</small> 
+   </div> 
+  </div> 
+  <div class="nav-inferior"> <a class="nav-btn activo" data-target="inicio"> <i class="fa fa-home"></i> <span>Inicio</span> </a> <a class="nav-btn" data-target="ciclo"> <i class="fa fa-calendar"></i> <span>Ciclo</span> </a> <a class="nav-btn" data-target="embarazo"> <i class="fa fa-heartbeat"></i> <span>Embarazo</span> </a> <a class="nav-btn" data-target="salud"> <i class="fa fa-plus-square"></i> <span>Salud</span> </a> <a class="nav-btn" data-target="perfil"> <i class="fa fa-user"></i> <span>Perfil</span> </a> 
+  </div> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
   <script>
     // Frases del día
@@ -1097,9 +1211,26 @@ body.dark-mode .sintoma-tag.activo {
       "Cuida tu cuerpo, es el único lugar que tienes para vivir."
     ];
 
+    // Consejos de salud
+    const consejosSalud = [
+      "Bebe al menos 2 litros de agua al día",
+      "Realiza 30 minutos de ejercicio diario",
+      "Duerme al menos 7-8 horas cada noche",
+      "Reduce el consumo de azúcares refinados",
+      "Practica técnicas de relajación diariamente",
+      "Incluye frutas y verduras en cada comida",
+      "Realiza chequeos médicos periódicos",
+      "Mantén una postura correcta al sentarte",
+      "Protege tu piel del sol diariamente",
+      "Dedica tiempo a actividades que te gusten"
+    ];
+
     // Obtener fecha actual
     const hoy = new Date();
     const fechaHoy = hoy.toISOString().split('T')[0];
+
+    // Contador de clicks para easter egg
+    let contadorClicks = 0;
 
     // Inicialización
     $(document).ready(function() {
@@ -1110,9 +1241,13 @@ body.dark-mode .sintoma-tag.activo {
       const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
       $('#fraseDelDia').text(fraseAleatoria);
       
+      // Mostrar consejo de salud
+      cargarConsejosSalud();
+      
       // Actualizar fecha en los campos
       $('#fechaNotas').val(fechaHoy);
       $('#fechaPesoEmbarazo').val(fechaHoy);
+      $('#fechaEventoMedico').val(fechaHoy);
       
       // Actualizar resumen
       actualizarResumen();
@@ -1137,6 +1272,26 @@ body.dark-mode .sintoma-tag.activo {
       
       // Configurar carga de foto de perfil
       configurarFotoPerfil();
+      
+      // Cargar widget de clima
+      cargarClima();
+      
+      // Configurar Easter Egg
+      $('#cabecera h1').click(function() {
+        contadorClicks++;
+        if(contadorClicks === 5) {
+          mostrarMensaje('¡Gracias por usar Mujer Saludable! - Andres Alvarez');
+          contadorClicks = 0;
+        }
+      });
+      
+      // Configurar atajo de teclado para modo creador
+      $(document).keydown(function(e) {
+        if(e.ctrlKey && e.key === 'm') {
+          $('body').toggleClass('modo-creador');
+          mostrarMensaje('Modo creador ' + ($('body').hasClass('modo-creador') ? 'activado' : 'desactivado'));
+        }
+      });
     });
 
     // Navegación
@@ -1204,9 +1359,9 @@ body.dark-mode .sintoma-tag.activo {
         $('#headerNombre').text(nombre);
         $('#saludoUsuaria').html(`<p>Hola, <strong>${nombre}</strong>. ¿Cómo estás hoy?</p>`);
       } else {
-        $('#saludoUsuaria').html(`<p>Completa tu perfil para personalizar la app</p>`);
-      }
-      
+     $('#saludoUsuaria').html('<p>Completa tu perfil para personalizar la app</p>');      }             
+
+
       // Cargar resto de datos del perfil
       $('#apellidos').val(localStorage.getItem('apellidos') || '');
       $('#fechaNacimiento').val(localStorage.getItem('fechaNacimiento') || '');
@@ -1217,6 +1372,10 @@ body.dark-mode .sintoma-tag.activo {
       $('#medicamentosHabituales').val(localStorage.getItem('medicamentosHabituales') || '');
       $('#contactoEmergenciaNombre').val(localStorage.getItem('contactoEmergenciaNombre') || '');
       $('#contactoEmergenciaTelefono').val(localStorage.getItem('contactoEmergenciaTelefono') || '');
+      $('#contactoEmergencia2').val(localStorage.getItem('contactoEmergencia2') || '');
+      $('#hospitalParto').val(localStorage.getItem('hospitalParto') || '');
+      $('#medicoParto').val(localStorage.getItem('medicoParto') || '');
+      $('#telefonoEmergencia').val(localStorage.getItem('telefonoEmergencia') || '');
       
       // Cargar configuraciones
       $('#configNotificaciones').prop('checked', localStorage.getItem('configNotificaciones') !== 'false');
@@ -1408,6 +1567,29 @@ body.dark-mode .sintoma-tag.activo {
       $('.sintoma-tag').removeClass('activo');
     }
 
+    // Calcular fertilidad
+    function calcularFertilidad() {
+      const fecha = $('#fertilidadFecha').val();
+      const duracionCiclo = parseInt($('#fertilidadDuracion').val() || '28');
+      
+      if (!fecha) {
+        mostrarMensaje('Selecciona una fecha');
+        return;
+      }
+      
+      const fechaInicio = new Date(fecha);
+      const diaOvulacion = duracionCiclo - 14;
+      const inicioFertil = new Date(fechaInicio);
+      inicioFertil.setDate(inicioFertil.getDate() + (diaOvulacion - 5));
+      const finFertil = new Date(fechaInicio);
+      finFertil.setDate(finFertil.getDate() + (diaOvulacion + 1));
+      
+      let html = `<p>Tus días más fértiles son del <strong>${formatearFecha(inicioFertil.toISOString().split('T')[0])}</strong> al <strong>${formatearFecha(finFertil.toISOString().split('T')[0])}</strong></p>`;
+      html += `<p>La ovulación probablemente ocurra alrededor del <strong>${formatearFecha(new Date(fechaInicio.setDate(fechaInicio.getDate() + diaOvulacion))) }</strong></p>`;
+      
+      $('#resultadoFertilidad').html(html);
+    }
+
     // Calcular embarazo
     function calcularEmbarazo() {
       const fechaUltimoPeriodo = $('#fechaUltimoPeriodo').val();
@@ -1497,6 +1679,19 @@ body.dark-mode .sintoma-tag.activo {
       ctx.fillText("Trim. 1", 20 + 260/6 - 20, 35);
       ctx.fillText("Trim. 2", 20 + 260/2 - 20, 35);
       ctx.fillText("Trim. 3", 20 + 5*260/6 - 20, 35);
+    }
+
+    // Guardar preparación para el parto
+    function guardarPreparacionParto() {
+      const hospital = $('#hospitalParto').val();
+      const medico = $('#medicoParto').val();
+      const telefono = $('#telefonoEmergencia').val();
+      
+      localStorage.setItem('hospitalParto', hospital);
+      localStorage.setItem('medicoParto', medico);
+      localStorage.setItem('telefonoEmergencia', telefono);
+      
+      mostrarMensaje('Información de parto guardada');
     }
 
     // Guardar peso de embarazo
@@ -1692,12 +1887,76 @@ body.dark-mode .sintoma-tag.activo {
         nota: nota
       };
       
+      // Manejar foto adjunta si existe
+      const fotoInput = document.getElementById('fotoDiario');
+      if (fotoInput.files.length > 0) {
+        const file = fotoInput.files[0];
+        const reader = new FileReader();
+        
+        reader.onload = function(event) {
+          registro.foto = event.target.result;
+          guardarRegistroDiario(registro);
+        };
+        
+        reader.readAsDataURL(file);
+      } else {
+        guardarRegistroDiario(registro);
+      }
+    }
+
+    function guardarRegistroDiario(registro) {
       let registrosAnteriores = JSON.parse(localStorage.getItem('registrosDiarioSalud') || '[]');
       registrosAnteriores.push(registro);
       localStorage.setItem('registrosDiarioSalud', JSON.stringify(registrosAnteriores));
       
       mostrarMensaje('Entrada guardada en el diario');
       $('#notasSalud').val('');
+      $('#fotoDiario').val('');
+    }
+
+    // Guardar evento médico
+    function guardarEventoMedico() {
+      const fecha = $('#fechaEventoMedico').val();
+      const tipo = $('#tipoEventoMedico').val();
+      const notas = $('#notasEventoMedico').val();
+      
+      const registro = {
+        fecha: fecha,
+        tipo: tipo,
+        notas: notas
+      };
+      
+      // Manejar documento adjunto si existe
+      const docInput = document.getElementById('documentoEventoMedico');
+      if (docInput.files.length > 0) {
+        const file = docInput.files[0];
+        const reader = new FileReader();
+        
+        reader.onload = function(event) {
+          registro.documento = {
+            nombre: file.name,
+            tipo: file.type,
+            contenido: event.target.result
+          };
+          guardarRegistroEvento(registro);
+        };
+        
+        reader.readAsDataURL(file);
+      } else {
+        guardarRegistroEvento(registro);
+      }
+    }
+
+    function guardarRegistroEvento(registro) {
+      let registrosAnteriores = JSON.parse(localStorage.getItem('registrosEventosMedicos') || '[]');
+      registrosAnteriores.push(registro);
+      localStorage.setItem('registrosEventosMedicos', JSON.stringify(registrosAnteriores));
+      
+      mostrarMensaje('Evento médico guardado');
+      $('#fechaEventoMedico').val(fechaHoy);
+      $('#tipoEventoMedico').val('consulta');
+      $('#notasEventoMedico').val('');
+      $('#documentoEventoMedico').val('');
     }
 
     // Guardar medicamento
@@ -1792,6 +2051,13 @@ body.dark-mode .sintoma-tag.activo {
       localStorage.setItem('contactoEmergenciaTelefono', contactoEmergenciaTelefono);
       
       mostrarMensaje('Información médica guardada');
+    }
+
+    // Guardar contactos de emergencia
+    function guardarContactosEmergencia() {
+      const contacto2 = $('#contactoEmergencia2').val();
+      localStorage.setItem('contactoEmergencia2', contacto2);
+      mostrarMensaje('Contactos de emergencia guardados');
     }
 
     // Guardar configuración
@@ -1923,6 +2189,72 @@ body.dark-mode .sintoma-tag.activo {
         $('#avatarContainer').html(`<i class="fa fa-user"></i>`);
         mostrarMensaje('Foto de perfil eliminada');
       });
+    }
+    
+    // Cargar consejos de salud
+    function cargarConsejosSalud() {
+      const consejoAleatorio = consejosSalud[Math.floor(Math.random() * consejosSalud.length)];
+      $('#consejoSalud').text(consejoAleatorio);
+    }
+    
+    // Cargar widget de clima
+    function cargarClima() {
+      // Simulación - en una app real usarías una API como OpenWeatherMap
+      const climas = [
+        { temp: 22, estado: "soleado", consejo: "¡Día perfecto para caminar al aire libre!" },
+        { temp: 15, estado: "nublado", consejo: "El clima fresco es ideal para ejercicio moderado" },
+        { temp: 30, estado: "caluroso", consejo: "Evita salir en horas de máximo calor y mantente hidratada" }
+      ];
+      
+      const climaAleatorio = climas[Math.floor(Math.random() * climas.length)];
+      
+      $('#widgetClima').html(`
+        <div class="clima-temp">${climaAleatorio.temp}°C</div>
+        <div class="clima-estado">${climaAleatorio.estado}</div>
+      `);
+      
+      $('#climaConsejo').text(climaAleatorio.consejo);
+    }
+    
+    // Funciones de comunidad
+    function mostrarForo() {
+      mostrarMensaje('Foro de discusión (simulado)');
+    }
+    
+    function mostrarFormularioPregunta() {
+      const pregunta = prompt("Escribe tu pregunta para el especialista:");
+      if (pregunta) {
+        mostrarMensaje('Pregunta enviada al especialista');
+      }
+    }
+    
+    function mostrarHistorias() {
+      mostrarMensaje('Historias inspiradoras (simulado)');
+    }
+    
+    function sugerirEvento() {
+      const evento = prompt("Sugiere un evento para la comunidad:");
+      if (evento) {
+        mostrarMensaje('Evento sugerido, ¡gracias!');
+      }
+    }
+    
+    // Funciones de recursos
+    function explorarRecursos() {
+      mostrarMensaje('Explorar recursos (simulado)');
+    }
+    
+    // Funciones de emergencia
+    function llamarEmergencia() {
+      if (confirm('¿Estás segura que deseas llamar a emergencias?')) {
+        mostrarMensaje('Llamando a emergencias...');
+        // En una app real, aquí se haría la llamada
+      }
+    }
+    
+    // Funciones del creador
+    function mostrarAgradecimientos() {
+      alert("Agradecimientos:\n\nA todas las mujeres que inspiran este proyecto.\nA los profesionales de la salud que brindan su conocimiento.\nA la comunidad de desarrolladores que comparte su sabiduría.\n\n- Andres Alvarez");
     }
     
     // Exportar datos (simulado)
