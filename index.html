@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es"> 
  <head> 
@@ -1187,7 +1188,7 @@
     <p>Puedes exportar tus datos o eliminar toda la información guardada en la aplicación.</p> 
     <div class="btn-group"> <button onclick="exportarDatos()" class="outline"><i class="fa fa-download"></i> Exportar datos</button> <button onclick="importarDatos()" class="outline"><i class="fa fa-upload"></i> Importar datos</button> 
     </div> <button onclick="resetDatos()" class="danger"><i class="fa fa-trash-alt"></i> Eliminar todos los datos</button> 
-    <small id="version-info">App versión 3.0.0 - Desarrollado por Andres Alvarez</small>
+    <small id="version-info">App versión 3.5.1 - Desarrollado por Andres Alvarez</small>
 
 <div id="version-modal" class="modal">
   <div class="modal-content">
@@ -1361,144 +1362,69 @@
     <p>A la comunidad de desarrolladores que comparte su sabiduría.</p> 
     <br><strong>- Andres Alvarez</strong> 
    </div> 
-  </div> <!-- Botón IA flotante (Ayuda) --> <button id="botonIA"><i class="fa fa-question-circle"></i></button> <!-- Modal --> 
-  <div id="modalIA"> 
-   <div id="modalHeader"> <button id="abrirMenu"><i class="fa fa-bars"></i></button> Asistente de Salud <button id="cerrarModal"><i class="fa fa-times"></i></button> 
-   </div> 
-   <div id="menuConversaciones"> 
-    <ul id="listaConversaciones"></ul> 
-   </div> 
-   <div id="chatbox"></div> 
-   <div id="sugerenciasContainer"> 
-    <p>¿Necesitas ayuda con algún tema en particular?</p> 
-    <div id="sugerenciasBotones"></div> 
-   </div> 
-   <div id="modalFooter"> 
-    <input type="text" id="userInput" placeholder="Escribe algo..."> <button id="enviarBtn"><i class="fa fa-paper-plane"></i></button> 
-   </div> 
   </div> 
-  <style>
-  /* Estilo base del botón IA con animaciones femeninas */
- #botonIA {
-  position: fixed;
-  bottom: 50px;
-  right: 20px;
-  z-index: 1000;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(145deg, #ff69b4, #ff1493);
-  color: white;
-  border: none;
-  font-size: 32px; /* Aumentamos el tamaño del icono */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: all 1.5s ease-in-out;
-  animation: 
-    cambioColores 15s infinite alternate,
-    cambioForma 30s infinite ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0; /* Eliminamos cualquier padding */
-  overflow: hidden; /* Aseguramos que el icono no se salga */
-}
+<!-- Botón IA flotante (Ayuda) -->
+<button id="botonIA"><i class="fa fa-heartbeat"></i></button>
+<!-- Modal -->
+<div id="modalIA">
+  <div id="modalHeader">
+    <button id="abrirMenu"><i class="fa fa-bars"></i></button>
+    <span><i class="fa fa-heartbeat"></i> Asistente de Salud Femenina</span>
+    <button id="cerrarModal"><i class="fa fa-times"></i></button>
+  </div>
+  <div id="menuConversaciones">
+    <ul id="listaConversaciones"></ul>
+  </div>
+  <div id="chatbox"></div>
+  <div id="sugerenciasContainer">
+    <p>¿Necesitas ayuda con algún tema de salud femenina?</p>
+    <div id="sugerenciasBotones"></div>
+  </div>
+  <div id="modalFooter">
+    <div id="creditos">Powered By Gemini - Design by Andres Alvarez</div>
+    <div id="inputContainer">
+      <input type="text" id="userInput" placeholder="Escribe tu consulta de salud...">
+      <button id="enviarBtn"><i class="fa fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
 
-/* Ajustamos el icono dentro del botón */
-#botonIA i.fa-question-circle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  margin: 0; /* Eliminamos márgenes */
-  padding: 0; /* Eliminamos paddings */
-}
-  /* Formas femeninas suaves */
-  @keyframes cambioForma {
-    0%, 25% { 
-      /* Corazón estilizado */
-      clip-path: polygon(
-        50% 20%,
-        60% 10%,
-        70% 10%,
-        80% 20%,
-        80% 30%,
-        50% 65%,
-        20% 30%,
-        20% 20%,
-        30% 10%,
-        40% 10%
-      );
-    }
-    30%, 55% { 
-      /* Flor femenina */
-      clip-path: polygon(
-        50% 5%,
-        60% 25%,
-        80% 25%,
-        65% 40%,
-        75% 60%,
-        50% 50%,
-        25% 60%,
-        35% 40%,
-        20% 25%,
-        40% 25%
-      );
-    }
-    60%, 85% { 
-      /* Mariposa */
-      clip-path: polygon(
-        50% 10%,
-        60% 30%,
-        80% 20%,
-        70% 40%,
-        85% 50%,
-        70% 60%,
-        80% 80%,
-        60% 70%,
-        50% 90%,
-        40% 70%,
-        20% 80%,
-        30% 60%,
-        15% 50%,
-        30% 40%,
-        20% 20%,
-        40% 30%
-      );
-    }
-    90%, 100% { 
-      /* Lazo femenino */
-      clip-path: polygon(
-        50% 10%,
-        60% 20%,
-        55% 40%,
-        70% 35%,
-        65% 50%,
-        50% 45%,
-        35% 50%,
-        30% 35%,
-        45% 40%,
-        40% 20%
-      );
-    }
+<style>
+  /* Estilo base del botón IA con animaciones femeninas - VERSIÓN MEJORADA */
+  #botonIA {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(145deg, #ff69b4, #ff1493);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 28px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 2s infinite;
   }
 
-  /* Degradados femeninos sofisticados */
-  @keyframes cambioColores {
-    0% { background: linear-gradient(145deg, #ffb6c1, #ff69b4); box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4); }
-    25% { background: linear-gradient(145deg, #ffcce0, #ff8fab); box-shadow: 0 4px 20px rgba(255, 140, 171, 0.4); }
-    50% { background: linear-gradient(145deg, #f8a5d8, #e373c1); box-shadow: 0 4px 20px rgba(227, 115, 193, 0.4); }
-    75% { background: linear-gradient(145deg, #ffb3de, #ff80bf); box-shadow: 0 4px 20px rgba(255, 128, 191, 0.4); }
-    100% { background: linear-gradient(145deg, #f9c2e5, #f28dc2); box-shadow: 0 4px 20px rgba(242, 141, 194, 0.4); }
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
   }
 
-  #botonIA:hover { 
-    transform: scale(1.15) rotate(5deg);
-    animation-play-state: paused;
-    filter: brightness(1.05);
+  #botonIA:hover {
+    animation: none;
+    transform: scale(1.15);
+    background: linear-gradient(145deg, #ff1493, #ff69b4);
   }
 
-  /* Diseño modal temático femenino premium */
+  /* Diseño modal temático femenino premium mejorado */
   #modalIA {
     display: none;
     position: fixed;
@@ -1508,7 +1434,7 @@
     height: 520px;
     background: #fff9fb;
     border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
     z-index: 999;
     flex-direction: column;
     overflow: hidden;
@@ -1527,6 +1453,16 @@
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     letter-spacing: 0.5px;
     border-bottom: 1px solid #ffd6e7;
+  }
+
+  #modalHeader span {
+    flex: 1;
+    text-align: center;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
 
   #cerrarModal, #abrirMenu {
@@ -1586,6 +1522,16 @@
     transition: all 0.3s;
     color: #d6336c;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #menuConversaciones li::before {
+    content: '\f086';
+    font-family: 'FontAwesome';
+    font-size: 12px;
+    color: #ff8fab;
   }
 
   #menuConversaciones li:hover {
@@ -1603,6 +1549,10 @@
     background: #fff;
     scrollbar-width: thin;
     scrollbar-color: #ffd6e7 #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffebf3' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
   }
 
   #chatbox::-webkit-scrollbar {
@@ -1661,9 +1611,24 @@
   /* Área de entrada optimizada */
   #modalFooter {
     display: flex;
-    padding: 12px 16px;
+    flex-direction: column;
+    padding: 0;
     border-top: 1px solid #ffebf3;
     background: #fff9fb;
+  }
+
+  #creditos {
+    font-size: 10px;
+    text-align: center;
+    padding: 6px;
+    color: #ff8fab;
+    background: #fff5f9;
+    border-bottom: 1px solid #ffebf3;
+  }
+
+  #inputContainer {
+    display: flex;
+    padding: 12px 16px;
     align-items: center;
     gap: 8px;
   }
@@ -1721,8 +1686,8 @@
   }
 
   /* Estilos para mensajes del chat */
-  #chatbox p {
-    margin: 12px 0;
+  .mensaje {
+    margin: 0;
     padding: 14px 18px;
     border-radius: 18px;
     max-width: 85%;
@@ -1730,31 +1695,56 @@
     transition: all 0.3s;
     font-size: 14px;
     line-height: 1.5;
+    word-wrap: break-word;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   }
   
-  #chatbox p strong {
+  .mensaje strong {
     color: #e84393;
     font-weight: 600;
   }
   
   /* Mensajes del usuario */
-  #chatbox p:nth-child(odd) {
+  .mensaje-usuario {
     background: linear-gradient(135deg, #fff0f7, #ffe6f2);
     margin-left: auto;
     border-bottom-right-radius: 5px;
     color: #d6336c;
+    padding-left: 40px;
+    position: relative;
+  }
+  
+  .mensaje-usuario::before {
+    content: '\f007';
+    font-family: 'FontAwesome';
+    position: absolute;
+    left: 15px;
+    top: 14px;
+    color: #ff69b4;
   }
   
   /* Mensajes de la IA */
-  #chatbox p:nth-child(even) {
+  .mensaje-ia {
     background: linear-gradient(135deg, #fff9fe, #fff0fa);
     margin-right: auto;
     border-bottom-left-radius: 5px;
     color: #a83b7d;
+    position: relative;
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .mensaje-ia::before {
+    content: '\f21e';
+    font-family: 'FontAwesome';
+    position: absolute;
+    left: 15px;
+    top: 14px;
+    color: #fb6f92;
   }
 
   /* Indicadores de burbuja de chat */
-  #chatbox p:nth-child(odd)::after {
+  .mensaje-usuario::after {
     content: '';
     position: absolute;
     right: -6px;
@@ -1765,7 +1755,7 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%);
   }
 
-  #chatbox p:nth-child(even)::before {
+  .mensaje-ia::after {
     content: '';
     position: absolute;
     left: -6px;
@@ -1775,242 +1765,427 @@
     background: inherit;
     clip-path: polygon(0 0, 100% 0, 0 100%);
   }
-</style> 
-  <script>
-  // Asegurarse de que Font Awesome esté cargado
-  if (!document.head.querySelector('[href*="font-awesome"]')) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
-    document.head.appendChild(link);
+
+  /* Botón de copiar */
+  .btn-copiar {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+    color: #e84393;
+    font-size: 12px;
   }
 
-  const botonIA = document.getElementById("botonIA");
-  const modalIA = document.getElementById("modalIA");
-  const cerrarModal = document.getElementById("cerrarModal");
-  const chatbox = document.getElementById("chatbox");
-  const userInput = document.getElementById("userInput");
-  const enviarBtn = document.getElementById("enviarBtn");
-  const abrirMenu = document.getElementById("abrirMenu");
-  const menuConversaciones = document.getElementById("menuConversaciones");
-  const listaConversaciones = document.getElementById("listaConversaciones");
-  const sugerenciasContainer = document.getElementById("sugerenciasContainer");
-  const sugerenciasBotones = document.getElementById("sugerenciasBotones");
-
-  let mensajesActuales = [];
-  let nombreActual = "Conversación " + new Date().toLocaleString();
-
-  // Base de conocimiento de salud
-  const conocimientoSalud = {
-    "dieta": [
-      "Una dieta equilibrada debe incluir frutas, verduras, proteínas y carbohidratos complejos.",
-      "Reduce el consumo de alimentos procesados y azúcares refinados.",
-      "La dieta mediterránea es una excelente opción para la salud cardiovascular."
-    ],
-    "ejercicio": [
-      "Se recomienda al menos 150 minutos de ejercicio moderado por semana.",
-      "Combina cardio con entrenamiento de fuerza para mejores resultados.",
-      "Caminar 30 minutos al día puede mejorar significativamente tu salud."
-    ],
-    "sueño": [
-      "Los adultos necesitan entre 7-9 horas de sueño por noche.",
-      "Mantén un horario regular de sueño, incluso los fines de semana.",
-      "Evita pantallas al menos 1 hora antes de dormir para mejorar la calidad del sueño."
-    ],
-    "estrés": [
-      "La meditación y respiración profunda pueden reducir el estrés.",
-      "El ejercicio regular es excelente para manejar el estrés.",
-      "Organiza tu tiempo y prioriza tareas para reducir el estrés."
-    ],
-    "hidratación": [
-      "Debes beber al menos 2 litros de agua al día.",
-      "La orina clara es un buen indicador de hidratación adecuada.",
-      "No esperes a tener sed para beber agua."
-    ]
-  };
-
-  // Temas de sugerencias
-  const temasSugeridos = ["dieta", "ejercicio", "sueño", "estrés", "hidratación"];
-
-  // Mostrar sugerencias
-  function mostrarSugerencias() {
-    sugerenciasBotones.innerHTML = "";
-    temasSugeridos.forEach(tema => {
-      const btn = document.createElement("button");
-      btn.className = "sugerencia-btn";
-      btn.textContent = tema;
-      btn.onclick = () => {
-        userInput.value = `¿Qué me recomiendas sobre ${tema}?`;
-        enviarBtn.click();
-      };
-      sugerenciasBotones.appendChild(btn);
-    });
-    sugerenciasContainer.style.display = "block";
+  .mensaje-ia:hover .btn-copiar {
+    opacity: 1;
   }
 
-  // Función para guardar la conversación actual
-  function guardarConversacion(nombre, mensajes) {
-    if (!mensajes || mensajes.length === 0) return;
-    localStorage.setItem(`conversacion_${nombre}`, JSON.stringify(mensajes));
+  .btn-copiar:hover {
+    background: rgba(255, 255, 255, 0.8);
   }
 
-  // Función para cargar todas las conversaciones guardadas
-  function cargarConversaciones() {
-    listaConversaciones.innerHTML = "";
-    let conversaciones = [];
-    
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key.startsWith("conversacion_")) {
-        try {
-          const datos = JSON.parse(localStorage.getItem(key));
-          if (Array.isArray(datos)) {
-            const nombre = key.replace("conversacion_", "");
-            conversaciones.push({ nombre, datos });
-          }
-        } catch (e) {
-          console.error("Error al parsear conversación:", e);
-        }
-      }
-    }
-    
-    conversaciones.sort((a, b) => {
-      return new Date(b.nombre.replace("Conversación ", "")) - 
-             new Date(a.nombre.replace("Conversación ", ""));
-    });
-    
-    conversaciones.forEach(conv => {
-      const li = document.createElement("li");
-      li.textContent = conv.nombre;
-      li.onclick = () => {
-        mensajesActuales = conv.datos;
-        nombreActual = conv.nombre;
-        mostrarConversacion(conv.datos);
-        menuConversaciones.style.display = "none";
-      };
-      listaConversaciones.appendChild(li);
-    });
+  /* Notificación de copiado */
+  .notificacion-copiado {
+    position: fixed;
+    bottom: 180px;
+    right: 40px;
+    background: #ff8fab;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1001;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
 
-  // Función para mostrar los mensajes en el chat
-  function mostrarConversacion(mensajes) {
-    chatbox.innerHTML = "";
-    mensajes.forEach(m => {
-      const p = document.createElement("p");
-      p.innerHTML = `<strong>${m.rol}:</strong> ${m.texto}`;
-      chatbox.appendChild(p);
-    });
-    chatbox.scrollTop = chatbox.scrollHeight;
-    
-    // Mostrar sugerencias si es el primer mensaje
-    if (mensajes.length === 0) {
-      mostrarSugerencias();
-    } else {
-      sugerenciasContainer.style.display = "none";
-    }
+  .notificacion-copiado.mostrar {
+    opacity: 1;
   }
+</style>
 
-  // Función para obtener respuesta de la IA
-  async function obtenerRespuestaIA(mensaje) {
-    // Convertir mensaje a minúsculas para facilitar la comparación
-    const mensajeLower = mensaje.toLowerCase();
-    
-    // Buscar temas conocidos en el mensaje
-    let temaEncontrado = null;
-    for (const tema in conocimientoSalud) {
-      if (mensajeLower.includes(tema)) {
-        temaEncontrado = tema;
-        break;
-      }
-    }
-    
-    // Si encontramos un tema conocido, devolver una respuesta específica
-    if (temaEncontrado) {
-      const respuestas = conocimientoSalud[temaEncontrado];
-      return respuestas[Math.floor(Math.random() * respuestas.length)];
-    }
-    
-    // Si no es un tema conocido, generar una respuesta más general
-    await new Promise(resolve => setTimeout(resolve, 800));
-    
-    const respuestasGenerales = [
-      "Esa es una buena pregunta. ¿Te interesa saber sobre dieta, ejercicio o sueño?",
-      "Puedo ayudarte con consejos sobre salud. ¿Qué área te interesa más?",
-      "Para una respuesta más específica, ¿podrías indicarme si es sobre alimentación, actividad física o descanso?",
-      "La salud es un tema amplio. ¿Quieres que me centre en algún aspecto en particular?",
-      "¿Te gustaría que te dé recomendaciones sobre algún tema de salud específico?"
-    ];
-    
-    // Mostrar sugerencias para la próxima respuesta
-    mostrarSugerencias();
-    
-    return respuestasGenerales[Math.floor(Math.random() * respuestasGenerales.length)];
-  }
+<script>
+// Asegurarse de que Font Awesome esté cargado
+if (!document.head.querySelector('[href*="font-awesome"]')) {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+  document.head.appendChild(link);
+}
 
-  // Evento para enviar mensaje
-  enviarBtn.onclick = async () => {
-    const texto = userInput.value.trim();
-    if (!texto) return;
-    
-    // Agregar mensaje del usuario
-    mensajesActuales.push({ rol: "Tú", texto });
-    mostrarConversacion(mensajesActuales);
-    userInput.value = "";
-    sugerenciasContainer.style.display = "none";
-    
-    // Obtener y mostrar respuesta de la IA
-    const respuesta = await obtenerRespuestaIA(texto);
-    mensajesActuales.push({ rol: "Asistente", texto: respuesta });
-    mostrarConversacion(mensajesActuales);
-    
-    // Guardar la conversación
-    guardarConversacion(nombreActual, mensajesActuales);
-    cargarConversaciones();
-  };
+// Elementos del DOM
+const botonIA = document.getElementById("botonIA");
+const modalIA = document.getElementById("modalIA");
+const cerrarModal = document.getElementById("cerrarModal");
+const chatbox = document.getElementById("chatbox");
+const userInput = document.getElementById("userInput");
+const enviarBtn = document.getElementById("enviarBtn");
+const abrirMenu = document.getElementById("abrirMenu");
+const menuConversaciones = document.getElementById("menuConversaciones");
+const listaConversaciones = document.getElementById("listaConversaciones");
+const sugerenciasContainer = document.getElementById("sugerenciasContainer");
+const sugerenciasBotones = document.getElementById("sugerenciasBotones");
 
-  // Permitir enviar mensaje con Enter
-  userInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
+// Variables de estado
+let mensajesActuales = [];
+let nombreActual = "Conversación " + (new Date()).toLocaleString();
+
+// Configuración de la API de Gemini
+const API_KEY = "AIzaSyCjzCMqFzIGsAcme5dS_ul7UTG_y-CGeFA";
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+
+// Temas de sugerencias (enfoque en salud femenina)
+const temasSugeridos = [
+  "dieta equilibrada", 
+  "ejercicio para mujeres", 
+  "ciclo menstrual", 
+  "salud hormonal",
+  "cuidado de la piel",
+  "salud mental femenina",
+  "embarazo y postparto",
+  "menopausia",
+  "autoestima y cuerpo",
+  "relaciones saludables"
+];
+
+// Mostrar sugerencias
+function mostrarSugerencias() {
+  sugerenciasBotones.innerHTML = "";
+  temasSugeridos.forEach(tema => {
+    const btn = document.createElement("button");
+    btn.className = "sugerencia-btn";
+    btn.textContent = tema;
+    btn.onclick = () => {
+      userInput.value = `¿Qué me recomiendas sobre ${tema}?`;
       enviarBtn.click();
-    }
+    };
+    sugerenciasBotones.appendChild(btn);
   });
+  sugerenciasContainer.style.display = "block";
+}
 
-  // Mostrar/ocultar modal
-  botonIA.onclick = () => {
-    if (modalIA.style.display === "flex") {
-      modalIA.style.display = "none";
-    } else {
-      modalIA.style.display = "flex";
-      cargarConversaciones();
-      mostrarConversacion(mensajesActuales);
+// Función para guardar la conversación actual
+function guardarConversacion(nombre, mensajes) {
+  if (!mensajes || mensajes.length === 0) return;
+  localStorage.setItem(`conversacion_${nombre}`, JSON.stringify(mensajes));
+}
+
+// Función para cargar todas las conversaciones guardadas
+function cargarConversaciones() {
+  listaConversaciones.innerHTML = "";
+  let conversaciones = [];
+  
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key.startsWith("conversacion_")) {
+      try {
+        const datos = JSON.parse(localStorage.getItem(key));
+        if (Array.isArray(datos)) {
+          const nombre = key.replace("conversacion_", "");
+          conversaciones.push({ nombre, datos });
+        }
+      } catch (e) {
+        console.error("Error al parsear conversación:", e);
+      }
     }
-  };
-
-  // Cerrar modal
-  cerrarModal.onclick = () => {
-    modalIA.style.display = "none";
-    if (mensajesActuales.length > 0) {
-      guardarConversacion(nombreActual, mensajesActuales);
-    }
-    nombreActual = "Conversación " + new Date().toLocaleString();
-    mensajesActuales = [];
-  };
-
-  // Mostrar/ocultar menú de conversaciones
-  abrirMenu.onclick = (e) => {
-    e.stopPropagation();
-    menuConversaciones.style.display = menuConversaciones.style.display === "block" ? "none" : "block";
-  };
-
-  // Cerrar menú al hacer clic fuera
-  document.addEventListener("click", (e) => {
-    if (!menuConversaciones.contains(e.target) && e.target !== abrirMenu) {
+  }
+  
+  conversaciones.sort((a, b) => {
+    return new Date(b.nombre.replace("Conversación ", "")) - 
+           new Date(a.nombre.replace("Conversación ", ""));
+  });
+  
+  conversaciones.forEach(conv => {
+    const li = document.createElement("li");
+    li.textContent = conv.nombre;
+    li.onclick = () => {
+      mensajesActuales = conv.datos;
+      nombreActual = conv.nombre;
+      mostrarConversacion(conv.datos);
       menuConversaciones.style.display = "none";
-    }
+    };
+    listaConversaciones.appendChild(li);
   });
+}
 
-  // Mostrar sugerencias al iniciar
-  mostrarSugerencias();
+// Función para mostrar los mensajes en el chat
+function mostrarConversacion(mensajes) {
+  chatbox.innerHTML = "";
+  mensajes.forEach(m => {
+    const mensajeDiv = document.createElement("div");
+    mensajeDiv.className = m.rol === "Tú" ? "mensaje mensaje-usuario" : "mensaje mensaje-ia";
+    
+    // Añadir margen inferior para separación entre mensajes
+    mensajeDiv.style.marginBottom = "12px";
+    
+    if (m.rol === "Asistente") {
+      mensajeDiv.innerHTML = `<strong>Asistente:</strong> ${m.texto}`;
+      
+      // Agregar botón de copiar
+      const btnCopiar = document.createElement("button");
+      btnCopiar.className = "btn-copiar";
+      btnCopiar.title = "Copiar respuesta";
+      btnCopiar.innerHTML = '<i class="fa fa-copy"></i>';
+      btnCopiar.onclick = (e) => {
+        e.stopPropagation();
+        copiarTexto(m.texto);
+      };
+      mensajeDiv.appendChild(btnCopiar);
+    } else {
+      mensajeDiv.innerHTML = `<strong>Tú:</strong> ${m.texto}`;
+    }
+    
+    chatbox.appendChild(mensajeDiv);
+  });
+  
+  // Añadir espacio adicional después del último mensaje
+  if (mensajes.length > 0) {
+    chatbox.lastChild.style.marginBottom = "20px";
+  }
+  
+  chatbox.scrollTop = chatbox.scrollHeight;
+  
+  // Mostrar sugerencias si es el primer mensaje
+  if (mensajes.length === 0) {
+    mostrarSugerencias();
+  } else {
+    sugerenciasContainer.style.display = "none";
+  }
+}
+
+// Función para copiar texto al portapapeles
+function copiarTexto(texto) {
+  const notificacion = document.createElement("div");
+  notificacion.className = "notificacion-copiado";
+  notificacion.textContent = "¡Respuesta copiada!";
+  document.body.appendChild(notificacion);
+  
+  navigator.clipboard.writeText(texto).then(() => {
+    notificacion.classList.add("mostrar");
+    setTimeout(() => {
+      notificacion.classList.remove("mostrar");
+      setTimeout(() => {
+        document.body.removeChild(notificacion);
+      }, 300);
+    }, 2000);
+  });
+}
+
+// Función para verificar si el mensaje es sobre salud femenina
+function esTemaSaludFemenina(mensaje) {
+  const palabrasClave = [
+    'salud', 'mujer', 'femenina', 'dieta', 'nutrición', 'ejercicio', 
+    'sueño', 'estrés', 'hidratación', 'mental', 'bienestar', 'menstrual',
+    'hormonal', 'embarazo', 'postparto', 'menopausia', 'piel', 'cuerpo',
+    'autoestima', 'relación', 'cuidado', 'alimentación', 'fitness', 'yoga',
+    'meditación', 'ansiedad', 'depresión', 'sexual', 'ginecológica', 'mama',
+    'ósea', 'cardiovascular', 'metabolismo', 'peso', 'ejercicio', 'pilates',
+    'cardio', 'fuerza', 'flexibilidad', 'relajación', 'terapia', 'psicológica'
+  ];
+  
+  const mensajeLower = mensaje.toLowerCase();
+  return palabrasClave.some(palabra => mensajeLower.includes(palabra.toLowerCase()));
+}
+
+// Función para obtener respuesta de la IA usando Gemini API
+async function obtenerRespuestaIA(mensaje) {
+  // Verificar si el mensaje es sobre salud femenina
+  if (!esTemaSaludFemenina(mensaje)) {
+    return "💖 Lo siento, solo puedo responder preguntas relacionadas con salud femenina, bienestar, nutrición y temas similares. ¿En qué otro tema de salud femenina puedo ayudarte?";
+  }
+  
+  const prompt = `Eres un asistente de salud femenina especializado en nutrición, ejercicio, salud mental y bienestar general para mujeres. 
+  Responde de manera clara, profesional y con empatía. Usa emojis relevantes pero con moderación. 
+  Proporciona información basada en evidencia científica. Organiza la información en puntos claros.
+  Evita repeticiones innecesarias de emojis o frases.
+  
+  Pregunta: ${mensaje}
+  
+  Respuesta:`;
+  
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [{
+        role: "user",
+        parts: [{ text: prompt }]
+      }],
+      generationConfig: {
+        temperature: 0.7,
+        topK: 1,
+        topP: 1,
+        maxOutputTokens: 2048,
+        stopSequences: []
+      },
+      safetySettings: [
+        {
+          category: "HARM_CATEGORY_HARASSMENT",
+          threshold: "BLOCK_MEDIUM_AND_ABOVE"
+        },
+        {
+          category: "HARM_CATEGORY_HATE_SPEECH",
+          threshold: "BLOCK_MEDIUM_AND_ABOVE"
+        },
+        {
+          category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+          threshold: "BLOCK_MEDIUM_AND_ABOVE"
+        },
+        {
+          category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+          threshold: "BLOCK_MEDIUM_AND_ABOVE"
+        }
+      ]
+    })
+  };
+
+  try {
+    const response = await fetch(API_URL, requestOptions);
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.error?.message || "Error en la API");
+    }
+
+    let respuesta = data.candidates[0].content.parts[0].text;
+    
+    // Corregir problemas de codificación y formato
+    respuesta = respuesta
+      .replace(/Ã¡/g, "á")
+      .replace(/Ã©/g, "é")
+      .replace(/Ã/g, "í")
+      .replace(/Ã³/g, "ó")
+      .replace(/Ãº/g, "ú")
+      .replace(/Ã±/g, "ñ")
+      .replace(/Â¿/g, "¿")
+      .replace(/Â¡/g, "¡")
+      .replace(/\*\*/g, "")
+      .replace(/\s\s+/g, " ")
+      .replace(/(\S)\s+([.,!?])/g, "$1$2") // Eliminar espacios antes de puntuación
+      .replace(/([.,!?])(\S)/g, "$1 $2"); // Añadir espacio después de puntuación
+    
+    // Limitar repetición de emojis
+    respuesta = respuesta.replace(/(ðŸƒâ€â™€ï¸\s*)+/g, " ");
+    
+    // Organizar mejor los puntos
+    respuesta = respuesta.replace(/\*\s+/g, "\n• ");
+    
+    // Añadir emoji inicial según tema
+    if (mensaje.toLowerCase().includes('ejercicio') || mensaje.toLowerCase().includes('fitness')) {
+      respuesta = "🏋️‍♀️ " + respuesta;
+    } else if (mensaje.toLowerCase().includes('dieta') || mensaje.toLowerCase().includes('nutrición')) {
+      respuesta = "🍎 " + respuesta;
+    } else if (mensaje.toLowerCase().includes('sueño')) {
+      respuesta = "😴 " + respuesta;
+    } else if (mensaje.toLowerCase().includes('estrés') || mensaje.toLowerCase().includes('mental')) {
+      respuesta = "🧘‍♀️ " + respuesta;
+    } else if (mensaje.toLowerCase().includes('menstrual') || mensaje.toLowerCase().includes('ciclo')) {
+      respuesta = "🌸 " + respuesta;
+    } else if (mensaje.toLowerCase().includes('embarazo')) {
+      respuesta = "🤰 " + respuesta;
+    } else if (mensaje.toLowerCase().includes('menopausia')) {
+      respuesta = "🌿 " + respuesta;
+    } else {
+      respuesta = "💖 " + respuesta;
+    }
+    
+    // Asegurar mayúscula inicial
+    respuesta = respuesta.charAt(0).toUpperCase() + respuesta.slice(1);
+    
+    // Añadir espacios entre párrafos
+    respuesta = respuesta.replace(/\n/g, "\n\n");
+    
+    return respuesta;
+    
+  } catch (error) {
+    console.error("Error al llamar a la API:", error);
+    return "😔 Lo siento, hubo un error al procesar tu solicitud. Por favor, inténtalo de nuevo más tarde.";
+  }
+}
+
+// Evento para enviar mensaje
+enviarBtn.onclick = async () => {
+  const texto = userInput.value.trim();
+  if (!texto) return;
+  
+  // Agregar mensaje del usuario
+  mensajesActuales.push({ rol: "Tú", texto });
+  mostrarConversacion(mensajesActuales);
+  userInput.value = "";
+  sugerenciasContainer.style.display = "none";
+  
+  // Mostrar mensaje de "escribiendo..."
+  const typingIndicator = document.createElement("div");
+  typingIndicator.className = "mensaje mensaje-ia";
+  typingIndicator.innerHTML = '<strong>Asistente:</strong> <i class="fa fa-circle-o-notch fa-spin"></i> Escribiendo...';
+  typingIndicator.style.marginBottom = "12px";
+  chatbox.appendChild(typingIndicator);
+  chatbox.scrollTop = chatbox.scrollHeight;
+  
+  // Obtener y mostrar respuesta de la IA
+  const respuesta = await obtenerRespuestaIA(texto);
+  chatbox.removeChild(typingIndicator);
+  mensajesActuales.push({ rol: "Asistente", texto: respuesta });
+  mostrarConversacion(mensajesActuales);
+  
+  // Guardar la conversación
+  guardarConversacion(nombreActual, mensajesActuales);
+  cargarConversaciones();
+};
+
+// Permitir enviar mensaje con Enter
+userInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    enviarBtn.click();
+  }
+});
+
+// Mostrar/ocultar modal
+botonIA.onclick = () => {
+  modalIA.style.display = modalIA.style.display === "flex" ? "none" : "flex";
+  if (modalIA.style.display === "flex") {
+    cargarConversaciones();
+    mostrarConversacion(mensajesActuales);
+  }
+};
+
+// Cerrar modal
+cerrarModal.onclick = () => {
+  modalIA.style.display = "none";
+  if (mensajesActuales.length > 0) {
+    guardarConversacion(nombreActual, mensajesActuales);
+  }
+  nombreActual = "Conversación " + (new Date()).toLocaleString();
+  mensajesActuales = [];
+};
+
+// Mostrar/ocultar menú de conversaciones
+abrirMenu.onclick = (e) => {
+  e.stopPropagation();
+  menuConversaciones.style.display = menuConversaciones.style.display === "block" ? "none" : "block";
+};
+
+// Cerrar menú al hacer clic fuera
+document.addEventListener("click", (e) => {
+  if (!menuConversaciones.contains(e.target) && e.target !== abrirMenu) {
+    menuConversaciones.style.display = "none";
+  }
+});
+
+// Mostrar sugerencias al iniciar
+mostrarSugerencias();
+</script>
 </script> 
   <script>
 /// Función del creador para mostrar Agradecimientos (estilo profesional)
