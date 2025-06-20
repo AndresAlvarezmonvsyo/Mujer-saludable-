@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es"> 
  <head> 
@@ -1155,7 +1154,7 @@
      <input type="tel" id="contactoEmergenciaTelefono" placeholder="Teléfono"> 
     </div> <button onclick="guardarInfoMedica()"><i class="fa fa-save"></i> Guardar información médica</button> 
    </div> 
-   <div class="card"> 
+  <div class="card"> 
     <h2><i class="fa fa-code"></i> Acerca de esta App</h2> 
     <div class="avatar-container"> 
      <div class="avatar"> <i class="fa fa-user-tie"></i> 
@@ -1166,7 +1165,24 @@
     <div class="icon-text"> <i class="fab fa-github"></i> <span>Visita mi GitHub: <a href="https://github.com/AndresAlvarezmonvsyo?tab=repositories" target="_blank" id="githubLink"> github.com/AndresAlvarezmonvsyo </a> </span> 
     </div> 
     <div class="icon-text"> <i class="fa fa-envelope"></i> <span>Contacto: <a href="mailto:julianmoncayo69@gmail.com" id="emailLink"> julianmoncayo69@gmail.com </a> </span> 
-    </div> <button onclick="mostrarAgradecimientos()" class="outline"> <i class="fa fa-heart"></i> Agradecimientos </button> 
+    </div>
+     <button disabled class="agradecimiento-btn">
+  <i class="fa fa-heart"></i> Gracias por elegirnos, cada día trabajando para mejorar.
+</button>
+
+<style>
+.agradecimiento-btn {
+  border: none;
+  background: transparent;
+  color: #555;
+  cursor: default;
+  padding: 10px;
+  font-style: italic;
+}
+.agradecimiento-btn:hover {
+  background: transparent !important;
+}
+</style>
    </div> 
    <div class="card"> 
     <h2><i class="fa fa-cogs"></i> Configuración</h2> 
@@ -1183,32 +1199,28 @@
      </div> 
     </div> <button onclick="guardarConfiguracion()"> <i class="fa fa-save"></i> Guardar configuración </button> 
    </div> 
-  <div class="card"> 
+   <div class="card"> 
     <h2><i class="fa fa-database"></i> Gestión de datos</h2> 
     <p>Puedes exportar tus datos o eliminar toda la información guardada en la aplicación.</p> 
     <div class="btn-group"> <button onclick="exportarDatos()" class="outline"><i class="fa fa-download"></i> Exportar datos</button> <button onclick="importarDatos()" class="outline"><i class="fa fa-upload"></i> Importar datos</button> 
-    </div> <button onclick="resetDatos()" class="danger"><i class="fa fa-trash-alt"></i> Eliminar todos los datos</button> 
-    <small id="version-info">App versión 3.5.1 - Desarrollado por Andres Alvarez</small>
-
-<div id="version-modal" class="modal">
-  <div class="modal-content">
-    <span class="close-modal">&times;</span>
-    <h3><i class="fa fa-info-circle"></i> Información de la App</h3>
-    <div class="modal-body">
-      <p><strong>Versión:</strong> 3.0.0</p>
-      <p><strong>Novedades:</strong></p>
-      <ul>
-        <li>✨ Nuevo asistente de IA con diseño femenino</li>
-        <li>🎨 Interfaz rediseñada con colores pastel</li>
-        <li>💬 Chat interactivo de salud y bienestar</li>
-      </ul>
-      <p><strong>Desarrollador:</strong> Andres Alvarez</p>
-      <p><strong>Contacto:</strong> <a href="mailto:julianmoncayo69@gmail.com">julianmoncayo69@gmail.com</a></p>
-    </div>
-  </div>
-</div>
-
-<style>
+    </div> <button onclick="resetDatos()" class="danger"><i class="fa fa-trash-alt"></i> Eliminar todos los datos</button> <small id="version-info">App versión 3.6.3 - Desarrollado por Andres Alvarez</small> 
+    <div id="version-modal" class="modal"> 
+     <div class="modal-content"> <span class="close-modal">×</span> 
+      <h3><i class="fa fa-info-circle"></i> Información de la App</h3> 
+      <div class="modal-body"> 
+       <p><strong>Versión:</strong> 3.6.3</p> 
+       <p><strong>Novedades:</strong></p> 
+       <ul> 
+        <li>✨ Nuevo asistente de IA con diseño femenino</li> 
+        <li>🎨 Interfaz rediseñada con colores pastel</li> 
+        <li>💬 Chat interactivo de salud y bienestar</li> 
+       </ul> 
+       <p><strong>Desarrollador:</strong> Andres Alvarez</p> 
+       <p><strong>Cualquier error Contactame:</strong> <a href="mailto:julianmoncayo69@gmail.com">julianmoncayo69@gmail.com</a></p> 
+      </div> 
+     </div> 
+    </div> 
+    <style>
   /* Estilos para el modal */
   .modal {
     display: none;
@@ -1278,9 +1290,8 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
-</style>
-
-<script>
+</style> 
+    <script>
   // Mostrar/ocultar modal
   document.getElementById('version-info').addEventListener('click', function() {
     document.getElementById('version-modal').style.display = 'block';
@@ -1296,104 +1307,56 @@
       document.getElementById('version-modal').style.display = 'none';
     }
   });
-</script>
-
+</script> 
    </div> 
   </div> 
-
-
   <div class="nav-inferior"> <a class="nav-btn activo" data-target="inicio"> <i class="fa fa-home"></i> <span>Inicio</span> </a> <a class="nav-btn" data-target="ciclo"> <i class="fa fa-calendar"></i> <span>Ciclo</span> </a> <a class="nav-btn" data-target="embarazo"> <i class="fa fa-heartbeat"></i> <span>Embarazo</span> </a> <a class="nav-btn" data-target="salud"> <i class="fa fa-plus-square"></i> <span>Salud</span> </a> <a class="nav-btn" data-target="perfil"> <i class="fa fa-user"></i> <span>Perfil</span> </a> 
   </div> <!-- Agrega estas bibliotecas en el head de tu HTML --> <!-- Librería para exportar PDF --> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script> 
-  <style>
-  /* Modal personalizado para agradecimientos */
-  .modal-agradecimientos {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background: rgba(0,0,0,0.5);
-    animation: fadeIn 0.5s;
-  }
-
-  .modal-contenido {
-    background: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 12px;
-    width: 80%;
-    max-width: 450px;
-    text-align: center;
-    animation: slideDown 0.5s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  }
-
-  .cerrar-modal {
-    color: #888;
-    float: right;
-    font-size: 26px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .cerrar-modal:hover {
-    color: #000;
-  }
-
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-
-  @keyframes slideDown {
-    from {transform: translateY(-30px); opacity: 0;}
-    to {transform: translateY(0); opacity: 1;}
-  }
-</style> <!-- Modal Agradecimientos --> 
-  <div id="modalAgradecimientos" class="modal-agradecimientos"> 
-   <div class="modal-contenido"> <span class="cerrar-modal" onclick="cerrarModal()">×</span> 
-    <h2>Agradecimientos</h2> 
-    <p>A todas las mujeres que inspiran este proyecto.</p> 
-    <p>A los profesionales de la salud que brindan su conocimiento.</p> 
-    <p>A la comunidad de desarrolladores que comparte su sabiduría.</p> 
-    <br><strong>- Andres Alvarez</strong> 
+ 
+    </div> <!-- Botón IA flotante (Ayuda) --> <button id="botonIA"><i class="fa fa-heartbeat"></i></button> <!-- Modal principal --> 
+   <div id="modalIA"> <!-- Cabecera --> 
+    <div id="modalHeader"> <button id="abrirMenu"><i class="fa fa-bars"></i></button> <span><i class="fa fa-heartbeat"></i> Asistente de Salud Femenina</span> <button id="cerrarModal"><i class="fa fa-times"></i></button> 
+    </div> <!-- Contenedor principal --> 
+    <div id="mainContainer"> <!-- Menú lateral --> 
+     <div id="menuLateral"> 
+      <div id="menuHeader"> 
+       <h3>Conversaciones</h3> <button id="nuevaConversacion"><i class="fa fa-plus"></i></button> 
+      </div> 
+      <div id="listaConversacionesContainer"> 
+       <ul id="listaConversaciones"></ul> 
+      </div> 
+     </div> <!-- Área de chat --> 
+     <div id="chatArea"> 
+      <div id="chatbox"></div> <!-- Sugerencias --> 
+      <div id="sugerenciasContainer"> 
+       <p>¿Necesitas ayuda con algún tema de salud femenina?</p> 
+       <div id="sugerenciasBotones"></div> 
+      </div> <!-- Pie de página --> 
+      <div id="modalFooter"> 
+       <div id="creditos">
+         Powered By Gemini - Design by Andres Alvarez 
+       </div> 
+       <div id="inputContainer"> 
+        <input type="text" id="userInput" placeholder="Escribe tu consulta de salud..."> <button id="enviarBtn"><i class="fa fa-paper-plane"></i></button> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> <!-- Modal para editar nombre de conversación --> 
+   <div id="editarNombreModal" class="modal-editar"> 
+    <div class="modal-editar-contenido"> 
+     <h3>Editar nombre de conversación</h3> 
+     <input type="text" id="nuevoNombreConversacion"> 
+     <div class="modal-editar-botones"> <button id="cancelarEditar">Cancelar</button> <button id="guardarEditar">Guardar</button> 
+     </div> 
+    </div> 
    </div> 
-  </div> 
-<!-- Botón IA flotante (Ayuda) -->
-<button id="botonIA"><i class="fa fa-heartbeat"></i></button>
-<!-- Modal -->
-<div id="modalIA">
-  <div id="modalHeader">
-    <button id="abrirMenu"><i class="fa fa-bars"></i></button>
-    <span><i class="fa fa-heartbeat"></i> Asistente de Salud Femenina</span>
-    <button id="cerrarModal"><i class="fa fa-times"></i></button>
-  </div>
-  <div id="menuConversaciones">
-    <ul id="listaConversaciones"></ul>
-  </div>
-  <div id="chatbox"></div>
-  <div id="sugerenciasContainer">
-    <p>¿Necesitas ayuda con algún tema de salud femenina?</p>
-    <div id="sugerenciasBotones"></div>
-  </div>
-  <div id="modalFooter">
-    <div id="creditos">Powered By Gemini - Design by Andres Alvarez</div>
-    <div id="inputContainer">
-      <input type="text" id="userInput" placeholder="Escribe tu consulta de salud...">
-      <button id="enviarBtn"><i class="fa fa-paper-plane"></i></button>
-    </div>
-  </div>
-</div>
-
-<style>
-  /* Estilo base del botón IA con animaciones femeninas - VERSIÓN MEJORADA */
+   <style>
+ /* Estilo base del botón IA con animaciones femeninas - VERSIÓN MEJORADA */
   #botonIA {
     position: fixed;
-    bottom: 50px;
+    bottom: 5ñ0px;
     right: 20px;
     z-index: 1000;
     width: 60px;
@@ -1424,17 +1387,17 @@
     background: linear-gradient(145deg, #ff1493, #ff69b4);
   }
 
-  /* Diseño modal temático femenino premium mejorado */
+  /* Diseño modal principal */
   #modalIA {
     display: none;
     position: fixed;
     bottom: 120px;
-    right: 20px;
-    width: 340px;
-    height: 520px;
+    right: 30px;
+    width: 800px;
+    height: 650px;
     background: #fff9fb;
     border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3);
     z-index: 999;
     flex-direction: column;
     overflow: hidden;
@@ -1444,12 +1407,12 @@
   #modalHeader {
     background: linear-gradient(135deg, #ff8fab, #fb6f92);
     color: white;
-    padding: 16px 20px;
+    padding: 18px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     letter-spacing: 0.5px;
     border-bottom: 1px solid #ffd6e7;
@@ -1458,22 +1421,22 @@
   #modalHeader span {
     flex: 1;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
   }
 
   #cerrarModal, #abrirMenu {
     background: none;
     border: none;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
     transition: all 0.3s;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1485,95 +1448,180 @@
     transform: rotate(90deg);
   }
 
-  #menuConversaciones {
-    display: none;
+  /* Contenedor principal */
+  #mainContainer {
+    display: flex;
+    flex: 1;
+    height: calc(100% - 60px);
+  }
+
+  /* Menú lateral */
+  #menuLateral {
+    width: 250px;
     background: #fff5f9;
-    padding: 12px;
+    border-right: 1px solid #ffebf3;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  #menuHeader {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid #ffebf3;
-    max-height: 160px;
+  }
+
+  #menuHeader h3 {
+    margin: 0;
+    color: #d6336c;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  #nuevaConversacion {
+    background: linear-gradient(145deg, #ffb3d9, #ff8fab);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+  }
+
+  #nuevaConversacion:hover {
+    background: linear-gradient(145deg, #ff8fab, #ffb3d9);
+    transform: rotate(90deg);
+  }
+
+  #listaConversacionesContainer {
+    flex: 1;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #ffcce6 #fff5f9;
   }
 
-  #menuConversaciones::-webkit-scrollbar {
+  #listaConversacionesContainer::-webkit-scrollbar {
     width: 6px;
   }
 
-  #menuConversaciones::-webkit-scrollbar-thumb {
+  #listaConversacionesContainer::-webkit-scrollbar-thumb {
     background-color: #ffcce6;
     border-radius: 3px;
   }
 
-  #menuConversaciones ul {
+  #listaConversaciones {
     list-style: none;
-    padding: 0;
+    padding: 10px 0;
     margin: 0;
   }
 
-  #menuConversaciones li {
+  #listaConversaciones li {
     cursor: pointer;
-    padding: 10px 14px;
-    border-radius: 10px;
-    margin-bottom: 6px;
-    background: #fff;
-    border: 1px solid #ffe6f2;
-    font-size: 13px;
+    padding: 12px 15px;
+    border-radius: 0;
+    margin: 0;
+    font-size: 14px;
     transition: all 0.3s;
     color: #d6336c;
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    position: relative;
+    border-left: 3px solid transparent;
   }
 
-  #menuConversaciones li::before {
-    content: '\f086';
-    font-family: 'FontAwesome';
-    font-size: 12px;
-    color: #ff8fab;
-  }
-
-  #menuConversaciones li:hover {
+  #listaConversaciones li:hover {
     background: #fff0f7;
-    transform: translateX(3px);
-    box-shadow: 2px 2px 8px rgba(255, 140, 171, 0.1);
+  }
+
+  #listaConversaciones li.activa {
+    background: #ffe6f2;
+    border-left: 3px solid #ff8fab;
+    font-weight: 600;
+  }
+
+  #listaConversaciones li .acciones-conversacion {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff5f9;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  #listaConversaciones li:hover .acciones-conversacion {
+    display: flex;
+  }
+
+  #listaConversaciones li .accion-btn {
+    background: none;
+    border: none;
+    color: #ff8fab;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+  }
+
+  #listaConversaciones li .accion-btn:hover {
+    color: #fb6f92;
+    transform: scale(1.1);
+  }
+
+  /* Área de chat */
+  #chatArea {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
 
   #chatbox {
     flex: 1;
-    padding: 18px;
+    padding: 20px;
     overflow-y: auto;
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.6;
     background: #fff;
     scrollbar-width: thin;
     scrollbar-color: #ffd6e7 #fff;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffebf3' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+    gap: 15px;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffebf3' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
   }
 
   #chatbox::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
 
   #chatbox::-webkit-scrollbar-thumb {
     background-color: #ffd6e7;
-    border-radius: 3px;
+    border-radius: 4px;
   }
 
+  /* Sugerencias */
   #sugerenciasContainer {
-    padding: 14px 18px;
+    padding: 15px 20px;
     background: linear-gradient(135deg, #fff9fb, #fff5f9);
     border-top: 1px solid #ffebf3;
     display: none;
   }
 
   #sugerenciasContainer p {
-    margin: 0 0 12px 0;
-    font-size: 13px;
+    margin: 0 0 15px 0;
+    font-size: 14px;
     color: #e84393;
     font-weight: 500;
     text-align: center;
@@ -1582,7 +1630,7 @@
   #sugerenciasBotones {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
     justify-content: center;
   }
 
@@ -1590,25 +1638,25 @@
     background: linear-gradient(145deg, #ffb3d9, #ff8fab);
     color: white;
     border: none;
-    border-radius: 18px;
-    padding: 8px 16px;
-    font-size: 12px;
+    border-radius: 20px;
+    padding: 10px 18px;
+    font-size: 13px;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 0 2px 6px rgba(255, 140, 171, 0.2);
+    box-shadow: 0 3px 8px rgba(255, 140, 171, 0.2);
     font-weight: 500;
     text-transform: capitalize;
-    min-width: 80px;
+    min-width: 100px;
     text-align: center;
   }
 
   .sugerencia-btn:hover {
     background: linear-gradient(145deg, #ff8fab, #ffb3d9);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(255, 140, 171, 0.3);
+    box-shadow: 0 5px 12px rgba(255, 140, 171, 0.3);
   }
 
-  /* Área de entrada optimizada */
+  /* Pie de modal */
   #modalFooter {
     display: flex;
     flex-direction: column;
@@ -1618,9 +1666,9 @@
   }
 
   #creditos {
-    font-size: 10px;
+    font-size: 11px;
     text-align: center;
-    padding: 6px;
+    padding: 8px;
     color: #ff8fab;
     background: #fff5f9;
     border-bottom: 1px solid #ffebf3;
@@ -1628,19 +1676,19 @@
 
   #inputContainer {
     display: flex;
-    padding: 12px 16px;
+    padding: 15px 20px;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
   #userInput {
     flex: 1;
-    padding: 12px 16px;
-    font-size: 14px;
+    padding: 14px 18px;
+    font-size: 15px;
     border: 1px solid #ffd6e7;
-    border-radius: 20px;
-    min-height: 42px;
-    line-height: 1.4;
+    border-radius: 25px;
+    min-height: 45px;
+    line-height: 1.5;
     outline: none;
     transition: all 0.3s;
     background: #fff;
@@ -1657,10 +1705,10 @@
     opacity: 0.7;
   }
 
-  /* Botón enviar compacto y elegante */
+  /* Botón enviar */
   #enviarBtn {
-    width: 38px;
-    height: 38px;
+    width: 45px;
+    height: 45px;
     padding: 0;
     background: linear-gradient(145deg, #ff8fab, #fb6f92);
     color: white;
@@ -1672,13 +1720,13 @@
     justify-content: center;
     transition: all 0.3s;
     flex-shrink: 0;
-    box-shadow: 0 2px 6px rgba(251, 111, 146, 0.3);
+    box-shadow: 0 3px 8px rgba(251, 111, 146, 0.3);
   }
 
   #enviarBtn:hover {
     background: linear-gradient(145deg, #fb6f92, #ff8fab);
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 4px 10px rgba(251, 111, 146, 0.4);
+    box-shadow: 0 5px 12px rgba(251, 111, 146, 0.4);
   }
 
   #enviarBtn:active {
@@ -1688,15 +1736,15 @@
   /* Estilos para mensajes del chat */
   .mensaje {
     margin: 0;
-    padding: 14px 18px;
-    border-radius: 18px;
+    padding: 16px 20px;
+    border-radius: 20px;
     max-width: 85%;
     position: relative;
     transition: all 0.3s;
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.6;
     word-wrap: break-word;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
   }
   
   .mensaje strong {
@@ -1708,9 +1756,9 @@
   .mensaje-usuario {
     background: linear-gradient(135deg, #fff0f7, #ffe6f2);
     margin-left: auto;
-    border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 8px;
     color: #d6336c;
-    padding-left: 40px;
+    padding-left: 45px;
     position: relative;
   }
   
@@ -1718,39 +1766,41 @@
     content: '\f007';
     font-family: 'FontAwesome';
     position: absolute;
-    left: 15px;
-    top: 14px;
+    left: 18px;
+    top: 16px;
     color: #ff69b4;
+    font-size: 16px;
   }
   
   /* Mensajes de la IA */
   .mensaje-ia {
     background: linear-gradient(135deg, #fff9fe, #fff0fa);
     margin-right: auto;
-    border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 8px;
     color: #a83b7d;
     position: relative;
-    padding-right: 40px;
-    padding-left: 40px;
+    padding-right: 45px;
+    padding-left: 45px;
   }
 
   .mensaje-ia::before {
     content: '\f21e';
     font-family: 'FontAwesome';
     position: absolute;
-    left: 15px;
-    top: 14px;
+    left: 18px;
+    top: 16px;
     color: #fb6f92;
+    font-size: 16px;
   }
 
   /* Indicadores de burbuja de chat */
   .mensaje-usuario::after {
     content: '';
     position: absolute;
-    right: -6px;
+    right: -8px;
     bottom: 0;
-    width: 12px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
     background: inherit;
     clip-path: polygon(0 0, 100% 0, 100% 100%);
   }
@@ -1758,10 +1808,10 @@
   .mensaje-ia::after {
     content: '';
     position: absolute;
-    left: -6px;
+    left: -8px;
     bottom: 0;
-    width: 12px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
     background: inherit;
     clip-path: polygon(0 0, 100% 0, 0 100%);
   }
@@ -1769,13 +1819,13 @@
   /* Botón de copiar */
   .btn-copiar {
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 12px;
+    top: 12px;
     background: rgba(255, 255, 255, 0.5);
     border: none;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1783,7 +1833,7 @@
     opacity: 0;
     transition: opacity 0.3s;
     color: #e84393;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .mensaje-ia:hover .btn-copiar {
@@ -1797,25 +1847,145 @@
   /* Notificación de copiado */
   .notificacion-copiado {
     position: fixed;
-    bottom: 180px;
-    right: 40px;
+    bottom: 200px;
+    right: 50px;
     background: #ff8fab;
     color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 12px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
     opacity: 0;
     transition: opacity 0.3s;
     z-index: 1001;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
   }
 
   .notificacion-copiado.mostrar {
     opacity: 1;
   }
-</style>
 
-<script>
+  /* Modal para editar nombre */
+  .modal-editar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1002;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-editar-contenido {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    background: #fff9fb;
+    border: 1px solid #ffebf3;
+  }
+
+  .modal-editar-contenido h3 {
+    margin-top: 0;
+    color: #d6336c;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .modal-editar-contenido input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ffd6e7;
+    border-radius: 10px;
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: #d6336c;
+  }
+
+  .modal-editar-contenido input:focus {
+    outline: none;
+    border-color: #ff8fab;
+    box-shadow: 0 0 0 3px rgba(255, 140, 171, 0.2);
+  }
+
+  .modal-editar-botones {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  .modal-editar-botones button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  #cancelarEditar {
+    background: #fff0f7;
+    color: #ff8fab;
+  }
+
+  #cancelarEditar:hover {
+    background: #ffe6f2;
+  }
+
+  #guardarEditar {
+    background: linear-gradient(145deg, #ff8fab, #fb6f92);
+    color: white;
+  }
+
+  #guardarEditar:hover {
+    background: linear-gradient(145deg, #fb6f92, #ff8fab);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive */
+  @media (max-width: 850px) {
+    #modalIA {
+      width: 95%;
+      height: 80vh;
+      right: 2.5%;
+      bottom: 100px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #menuLateral {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      transform: translateX(-100%);
+    }
+    
+    #menuLateral.mostrar {
+      transform: translateX(0);
+    }
+    
+    #chatArea {
+      width: 100%;
+    }
+    
+    #botonIA {
+      bottom: 60px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      font-size: 26px;
+    }
+  }
+</style> 
+   <script>
 // Asegurarse de que Font Awesome esté cargado
 if (!document.head.querySelector('[href*="font-awesome"]')) {
   const link = document.createElement('link');
@@ -1832,14 +2002,20 @@ const chatbox = document.getElementById("chatbox");
 const userInput = document.getElementById("userInput");
 const enviarBtn = document.getElementById("enviarBtn");
 const abrirMenu = document.getElementById("abrirMenu");
-const menuConversaciones = document.getElementById("menuConversaciones");
+const menuLateral = document.getElementById("menuLateral");
 const listaConversaciones = document.getElementById("listaConversaciones");
 const sugerenciasContainer = document.getElementById("sugerenciasContainer");
 const sugerenciasBotones = document.getElementById("sugerenciasBotones");
+const nuevaConversacionBtn = document.getElementById("nuevaConversacion");
+const editarNombreModal = document.getElementById("editarNombreModal");
+const nuevoNombreConversacion = document.getElementById("nuevoNombreConversacion");
+const cancelarEditar = document.getElementById("cancelarEditar");
+const guardarEditar = document.getElementById("guardarEditar");
 
 // Variables de estado
 let mensajesActuales = [];
 let nombreActual = "Conversación " + (new Date()).toLocaleString();
+let conversacionEditando = null;
 
 // Configuración de la API de Gemini
 const API_KEY = "AIzaSyCjzCMqFzIGsAcme5dS_ul7UTG_y-CGeFA";
@@ -1878,7 +2054,18 @@ function mostrarSugerencias() {
 // Función para guardar la conversación actual
 function guardarConversacion(nombre, mensajes) {
   if (!mensajes || mensajes.length === 0) return;
+  
+  // Si ya existe una conversación con este nombre, la actualizamos
+  if (localStorage.getItem(`conversacion_${nombre}`)) {
+    localStorage.setItem(`conversacion_${nombre}`, JSON.stringify(mensajes));
+    return;
+  }
+  
+  // Si no existe, guardamos la nueva
   localStorage.setItem(`conversacion_${nombre}`, JSON.stringify(mensajes));
+  
+  // Actualizamos la lista de conversaciones
+  cargarConversaciones();
 }
 
 // Función para cargar todas las conversaciones guardadas
@@ -1901,20 +2088,69 @@ function cargarConversaciones() {
     }
   }
   
+  // Ordenar conversaciones por fecha (más reciente primero)
   conversaciones.sort((a, b) => {
     return new Date(b.nombre.replace("Conversación ", "")) - 
            new Date(a.nombre.replace("Conversación ", ""));
   });
   
+  // Mostrar conversaciones en el menú
   conversaciones.forEach(conv => {
     const li = document.createElement("li");
-    li.textContent = conv.nombre;
+    li.textContent = conv.nombre.length > 30 ? conv.nombre.substring(0, 30) + "..." : conv.nombre;
+    li.title = conv.nombre;
+    
+    // Marcar como activa si es la conversación actual
+    if (conv.nombre === nombreActual) {
+      li.classList.add("activa");
+    }
+    
+    // Crear contenedor de acciones
+    const accionesDiv = document.createElement("div");
+    accionesDiv.className = "acciones-conversacion";
+    
+    // Botón editar
+    const btnEditar = document.createElement("button");
+    btnEditar.className = "accion-btn";
+    btnEditar.innerHTML = '<i class="fa fa-pencil"></i>';
+    btnEditar.onclick = (e) => {
+      e.stopPropagation();
+      editarConversacion(conv.nombre);
+    };
+    
+    // Botón eliminar
+    const btnEliminar = document.createElement("button");
+    btnEliminar.className = "accion-btn";
+    btnEliminar.innerHTML = '<i class="fa fa-trash"></i>';
+    btnEliminar.onclick = (e) => {
+      e.stopPropagation();
+      eliminarConversacion(conv.nombre);
+    };
+    
+    accionesDiv.appendChild(btnEditar);
+    accionesDiv.appendChild(btnEliminar);
+    li.appendChild(accionesDiv);
+    
     li.onclick = () => {
+      // Quitar clase activa de todas las conversaciones
+      document.querySelectorAll("#listaConversaciones li").forEach(item => {
+        item.classList.remove("activa");
+      });
+      
+      // Añadir clase activa a la conversación seleccionada
+      li.classList.add("activa");
+      
+      // Cargar la conversación
       mensajesActuales = conv.datos;
       nombreActual = conv.nombre;
       mostrarConversacion(conv.datos);
-      menuConversaciones.style.display = "none";
+      
+      // Ocultar menú en móvil
+      if (window.innerWidth <= 600) {
+        menuLateral.classList.remove("mostrar");
+      }
     };
+    
     listaConversaciones.appendChild(li);
   });
 }
@@ -1927,7 +2163,7 @@ function mostrarConversacion(mensajes) {
     mensajeDiv.className = m.rol === "Tú" ? "mensaje mensaje-usuario" : "mensaje mensaje-ia";
     
     // Añadir margen inferior para separación entre mensajes
-    mensajeDiv.style.marginBottom = "12px";
+    mensajeDiv.style.marginBottom = "15px";
     
     if (m.rol === "Asistente") {
       mensajeDiv.innerHTML = `<strong>Asistente:</strong> ${m.texto}`;
@@ -1951,7 +2187,7 @@ function mostrarConversacion(mensajes) {
   
   // Añadir espacio adicional después del último mensaje
   if (mensajes.length > 0) {
-    chatbox.lastChild.style.marginBottom = "20px";
+    chatbox.lastChild.style.marginBottom = "25px";
   }
   
   chatbox.scrollTop = chatbox.scrollHeight;
@@ -2114,6 +2350,29 @@ async function obtenerRespuestaIA(mensaje) {
   }
 }
 
+// Función para editar una conversación
+function editarConversacion(nombre) {
+  conversacionEditando = nombre;
+  nuevoNombreConversacion.value = nombre;
+  editarNombreModal.style.display = "flex";
+}
+
+// Función para eliminar una conversación
+function eliminarConversacion(nombre) {
+  if (confirm(`¿Estás segura de que quieres eliminar la conversación "${nombre}"?`)) {
+    localStorage.removeItem(`conversacion_${nombre}`);
+    
+    // Si era la conversación actual, creamos una nueva
+    if (nombre === nombreActual) {
+      nombreActual = "Conversación " + (new Date()).toLocaleString();
+      mensajesActuales = [];
+      mostrarConversacion(mensajesActuales);
+    }
+    
+    cargarConversaciones();
+  }
+}
+
 // Evento para enviar mensaje
 enviarBtn.onclick = async () => {
   const texto = userInput.value.trim();
@@ -2129,7 +2388,7 @@ enviarBtn.onclick = async () => {
   const typingIndicator = document.createElement("div");
   typingIndicator.className = "mensaje mensaje-ia";
   typingIndicator.innerHTML = '<strong>Asistente:</strong> <i class="fa fa-circle-o-notch fa-spin"></i> Escribiendo...';
-  typingIndicator.style.marginBottom = "12px";
+  typingIndicator.style.marginBottom = "15px";
   chatbox.appendChild(typingIndicator);
   chatbox.scrollTop = chatbox.scrollHeight;
   
@@ -2141,7 +2400,6 @@ enviarBtn.onclick = async () => {
   
   // Guardar la conversación
   guardarConversacion(nombreActual, mensajesActuales);
-  cargarConversaciones();
 };
 
 // Permitir enviar mensaje con Enter
@@ -2170,24 +2428,82 @@ cerrarModal.onclick = () => {
   mensajesActuales = [];
 };
 
-// Mostrar/ocultar menú de conversaciones
+// Mostrar/ocultar menú lateral
 abrirMenu.onclick = (e) => {
   e.stopPropagation();
-  menuConversaciones.style.display = menuConversaciones.style.display === "block" ? "none" : "block";
+  if (window.innerWidth <= 600) {
+    menuLateral.classList.toggle("mostrar");
+  } else {
+    menuLateral.style.width = menuLateral.style.width === "0px" ? "250px" : "0px";
+  }
 };
 
-// Cerrar menú al hacer clic fuera
-document.addEventListener("click", (e) => {
-  if (!menuConversaciones.contains(e.target) && e.target !== abrirMenu) {
-    menuConversaciones.style.display = "none";
+// Nueva conversación
+nuevaConversacionBtn.onclick = () => {
+  // Guardar la conversación actual si tiene mensajes
+  if (mensajesActuales.length > 0) {
+    guardarConversacion(nombreActual, mensajesActuales);
   }
-});
+  
+  // Crear nueva conversación
+  nombreActual = "Conversación " + (new Date()).toLocaleString();
+  mensajesActuales = [];
+  mostrarConversacion(mensajesActuales);
+  
+  // Actualizar lista de conversaciones
+  cargarConversaciones();
+  
+  // Ocultar menú en móvil
+  if (window.innerWidth <= 600) {
+    menuLateral.classList.remove("mostrar");
+  }
+};
+
+// Guardar cambios al editar nombre
+guardarEditar.onclick = () => {
+  const nuevoNombre = nuevoNombreConversacion.value.trim();
+  if (nuevoNombre && nuevoNombre !== conversacionEditando) {
+    // Obtener los mensajes de la conversación
+    const mensajes = JSON.parse(localStorage.getItem(`conversacion_${conversacionEditando}`));
+    
+    // Eliminar la conversación antigua
+    localStorage.removeItem(`conversacion_${conversacionEditando}`);
+    
+    // Guardar con el nuevo nombre
+    localStorage.setItem(`conversacion_${nuevoNombre}`, JSON.stringify(mensajes));
+    
+    // Actualizar si era la conversación actual
+    if (conversacionEditando === nombreActual) {
+      nombreActual = nuevoNombre;
+    }
+    
+    // Actualizar lista
+    cargarConversaciones();
+  }
+  
+  // Cerrar modal
+  editarNombreModal.style.display = "none";
+};
+
+// Cancelar edición
+cancelarEditar.onclick = () => {
+  editarNombreModal.style.display = "none";
+};
+
+// Cerrar modal de edición al hacer clic fuera
+window.onclick = (e) => {
+  if (e.target === editarNombreModal) {
+    editarNombreModal.style.display = "none";
+  }
+};
 
 // Mostrar sugerencias al iniciar
 mostrarSugerencias();
-</script>
+
+// Cargar conversaciones al iniciar
+cargarConversaciones();
 </script> 
-  <script>
+   <script>
 /// Función del creador para mostrar Agradecimientos (estilo profesional)
 function mostrarAgradecimientos() {
   const modal = document.createElement('div');
@@ -2388,8 +2704,8 @@ function mostrarMensaje(mensaje) {
 
 
 </script> 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
-  <script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+   <script>
     // Frases del día
     const frases = [
       "Tu bienestar es tu mayor riqueza.",
@@ -3457,5 +3773,6 @@ function mostrarMensaje(mensaje) {
       }
     }
   </script> 
+  </div>
  </body>
 </html>
